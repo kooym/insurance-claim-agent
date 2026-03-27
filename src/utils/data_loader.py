@@ -10,7 +10,6 @@
 """
 from __future__ import annotations
 import json
-from functools import lru_cache
 from pathlib import Path
 
 from config.settings import (
@@ -26,10 +25,20 @@ from config.settings import (
 )
 
 
-@lru_cache(maxsize=16)
+# mtime 기반 캐시: 파일이 변경되면 자동 재로드
+_json_cache: dict[str, tuple[float, dict]] = {}
+
+
 def _load_json(path: Path) -> dict:
+    key = str(path)
+    mtime = path.stat().st_mtime
+    cached = _json_cache.get(key)
+    if cached and cached[0] == mtime:
+        return cached[1]
     with open(path, encoding="utf-8") as f:
-        return json.load(f)
+        data = json.load(f)
+    _json_cache[key] = (mtime, data)
+    return data
 
 
 # ── 커스텀 계약 레지스트리 (런타임 + 파일 영속) ─────────────────
