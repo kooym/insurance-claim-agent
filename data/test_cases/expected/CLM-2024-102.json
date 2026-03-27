@@ -1,0 +1,45 @@
+{
+  "claim_id": "CLM-2024-102",
+  "decision": "검토필요",
+  "total_payment": 1154000,
+  "breakdown": {
+    "IND-001": {
+      "claim_nature": "질병",
+      "kcd_code": "M51.1",
+      "hospital_days_claimed": 7,
+      "payable_days": 3,
+      "benefit_amount": 90000,
+      "formula": "(7일 - 면책4일) × 30,000원 = 3일 × 30,000원 = 90,000원",
+      "_note": "진단서 7일 vs 입원확인서 5일 불일치 — 검증 필요"
+    },
+    "SIL-001": {
+      "coverage_code": "SIL001",
+      "coverage_name": "실손의료비 (입원)",
+      "silson_generation": 3,
+      "covered_self_pay": 420000,
+      "non_covered_amount": 910000,
+      "copay_rate_covered": 0.2,
+      "copay_rate_non_covered": 0.2,
+      "benefit_amount": 974000,
+      "formula": "(급여 420,000 × 80%) + (비급여 910,000 × 80%) = 336,000 + 728,000 → min(1,064,000, 연한도잔) — IND 제외 실손만 974,000"
+    }
+  },
+  "reviewer_flag": true,
+  "reviewer_reason": "서류간 정보 불일치: 진단서 입원 7일(12/16~12/22) vs 입원확인서 5일(12/16~12/20), 영수증-세부내역 금액 1,000원 차이",
+  "missing_docs": [],
+  "denial_reason": null,
+  "applied_rules": [
+    {"rule_id": "COM-001", "status": "PASS", "reason": "계약 유효, 납입 정상"},
+    {"rule_id": "COM-002", "status": "PASS", "reason": "면책기간 경과 확인"},
+    {"rule_id": "COM-003", "status": "PASS", "reason": "면책사유 해당 없음 — KCD: M51.1"},
+    {"rule_id": "IND-001", "status": "FLAGGED", "reason": "입원일수 불일치 검증 필요"},
+    {"rule_id": "SIL-001", "status": "FLAGGED", "reason": "영수증 금액 불일치 검증 필요"}
+  ],
+  "_agent_expected": {
+    "risk_level": "HIGH",
+    "routing_action": "senior_review",
+    "confidence_max": 0.65,
+    "cross_validation_anomalies": ["date_mismatch", "amount_mismatch"],
+    "fraud_risk": false
+  }
+}

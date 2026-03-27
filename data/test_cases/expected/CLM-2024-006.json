@@ -1,0 +1,88 @@
+{
+  "claim_id": "CLM-2024-006",
+  "decision": "지급",
+  "total_payment": 219500,
+  "expected_payment_date": "2025-01-20",
+  "payment_deadline_note": "접수일 2025-01-15 기준 3영업일 후 지급 예정일(참고): 2025-01-20 (토·일·공휴일 제외, 상법 제732조·지급기한 기준 문서 참조)",
+  "breakdown": {
+    "SIL-001": {
+      "coverage_code": "SIL001",
+      "coverage_name": "실손의료비 (입원)",
+      "silson_generation": 4,
+      "care_type": "입원",
+      "covered_self_pay": 200000,
+      "non_covered_amount": 85000,
+      "non_covered_capped": 85000,
+      "sil_4gen_cap_details": [],
+      "copay_rate_covered": 0.2,
+      "copay_rate_non_covered": 0.3,
+      "copay_applied": 65500,
+      "benefit_amount": 219500,
+      "formula": "(급여 200,000 × 80%) + (비급여 85,000 × 70%) = 219,500원 (세부내역서 기준 4세대 비급여 항목별 한도 반영)"
+    }
+  },
+  "reviewer_flag": false,
+  "reviewer_reason": null,
+  "missing_docs": [],
+  "denial_reason": null,
+  "policy_clause": null,
+  "fraud_investigation_flag": false,
+  "fraud_investigation_reason": null,
+  "applied_rules": [
+    {
+      "rule_id": "COM-001",
+      "status": "PASS",
+      "reason": "계약 유효, 납입 정상",
+      "value": null
+    },
+    {
+      "rule_id": "COM-002",
+      "status": "PASS",
+      "reason": "면책기간 경과 확인 — 사고일: 2025-01-03",
+      "value": null
+    },
+    {
+      "rule_id": "COM-003",
+      "status": "PASS",
+      "reason": "면책사유 해당 없음 — KCD: J18.9 (폐렴)",
+      "value": null
+    },
+    {
+      "rule_id": "COM-004",
+      "status": "PASS",
+      "reason": "중복·단기가입·반복 청구 징후 없음",
+      "value": null
+    },
+    {
+      "rule_id": "DOC-CHECK",
+      "status": "PASS",
+      "reason": "서류 완비 (5건 제출)",
+      "value": null
+    },
+    {
+      "rule_id": "IND-001",
+      "status": "FAIL",
+      "reason": "입원 3일 — 면책일수(질병 4일) 차감 후 지급 대상 0일.",
+      "value": null
+    },
+    {
+      "rule_id": "SIL-001",
+      "status": "PASS",
+      "reason": "실손 4세대 (입원) — (급여 200,000 × 80%) + (비급여 85,000 × 70%) = 219,500원 (세부내역서 기준 4세대 비급여 항목별 한도 반영)",
+      "value": 219500.0
+    },
+    {
+      "rule_id": "SUR-001",
+      "status": "SKIP",
+      "reason": "SUR 담보 미청구 (청구서 미체크)",
+      "value": null
+    },
+    {
+      "rule_id": "FRD-007",
+      "status": "PASS",
+      "reason": "비급여 비중 29.8% — 정상 범위",
+      "value": null
+    }
+  ],
+  "generated_at": "2026-03-19T08:43:44.787735"
+}

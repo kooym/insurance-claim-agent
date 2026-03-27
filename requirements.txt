@@ -1,0 +1,50 @@
+# ══════════════════════════════════════════════════════════════════
+#  보험금 심사 Agent — 통합 의존성 (Python >=3.11, <3.14)
+# ══════════════════════════════════════════════════════════════════
+
+# ── UI ────────────────────────────────────────────────────────────
+streamlit>=1.44.0          # st.fragment, st.dialog, gap 제어 등 신규 UI 기능 필수
+streamlit-extras>=0.6.0    # stylable_container 등 UI 확장 컴포넌트
+
+# ── Config ────────────────────────────────────────────────────────
+python-dotenv>=1.0.0
+
+# ── LLM ───────────────────────────────────────────────────────────
+openai>=1.40.0
+anthropic>=0.34.0
+
+# ── Agent Orchestration (LangGraph) ──────────────────────────────
+langgraph>=0.2.0
+langchain>=0.3.0
+langchain-openai>=0.2.0
+langchain-community>=0.3.0
+
+# ── RAG / Vector DB ──────────────────────────────────────────────
+chromadb>=0.5.0
+tiktoken>=0.7.0
+sentence-transformers>=3.0.0
+
+# ── Document Processing / OCR ────────────────────────────────────
+pypdf>=4.0.0               # PDF 텍스트 추출
+python-docx>=1.1.0         # Word 문서 처리
+Pillow>=10.0.0             # 이미지 처리
+pytesseract>=0.3.10        # 로컬 OCR (Tesseract 엔진 별도 설치 필요)
+
+# ── Data ──────────────────────────────────────────────────────────
+numpy>=1.26,<3.0           # pandas·sentence-transformers·streamlit 공통 의존
+pandas>=2.0.0
+pydantic>=2.0.0
+
+# ── REST API (FastAPI) ───────────────────────────────────────────
+fastapi>=0.112.0
+uvicorn>=0.30.0
+requests>=2.31.0           # UI API 연동 탭
+httpx>=0.25.0              # FastAPI TestClient 필수
+python-multipart>=0.0.9    # FastAPI UploadFile 필수
+
+# ── Testing ───────────────────────────────────────────────────────
+pytest>=8.0.0
+
+# ── Logging / DX ─────────────────────────────────────────────────
+loguru>=0.7.0
+rich>=13.0.0

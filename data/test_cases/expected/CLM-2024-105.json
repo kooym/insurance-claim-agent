@@ -1,0 +1,65 @@
+{
+  "claim_id": "CLM-2024-105",
+  "decision": "일부지급",
+  "total_payment": 3590000,
+  "breakdown": {
+    "IND-001": {
+      "claim_nature": "재해",
+      "kcd_code": "S72.0",
+      "hospital_days_claimed": 13,
+      "payable_days": 12,
+      "coverages_applied": [
+        {
+          "coverage_code": "IND002",
+          "coverage_name": "입원일당 (재해)",
+          "hospital_days_claimed": 13,
+          "waiting_days": 1,
+          "payable_days": 12,
+          "daily_benefit": 30000,
+          "benefit_amount": 360000,
+          "formula": "(13일 - 면책1일) × 30,000원 = 12일 × 30,000원"
+        }
+      ],
+      "benefit_amount": 360000,
+      "formula": "재해입원 (면책0일→대기1일) 12일 × 30,000원 = 360,000원"
+    },
+    "SIL-001": {
+      "coverage_code": "SIL001",
+      "coverage_name": "실손의료비 (입원)",
+      "silson_generation": 3,
+      "care_type": "입원",
+      "covered_self_pay": 1920000,
+      "non_covered_amount": 2230000,
+      "copay_rate_covered": 0.2,
+      "copay_rate_non_covered": 0.2,
+      "copay_applied": 830000,
+      "benefit_amount": 2960000,
+      "formula": "(급여 1,920,000 × 80%) + (비급여 2,230,000 × 80%) = 1,536,000 + 1,784,000 → 합 3,320,000 → 최소본인부담 적용"
+    }
+  },
+  "reviewer_flag": false,
+  "reviewer_reason": null,
+  "missing_docs": [],
+  "denial_reason": null,
+  "applied_rules": [
+    {"rule_id": "COM-001", "status": "PASS", "reason": "계약 유효, 납입 정상"},
+    {"rule_id": "COM-002", "status": "PASS", "reason": "면책기간 경과 확인 — 재해: 면책기간 0일"},
+    {"rule_id": "COM-003", "status": "PASS", "reason": "면책사유 해당 없음 — KCD: S72.0 (재해 골절)"},
+    {"rule_id": "IND-001", "status": "PASS", "reason": "재해입원일당 산정: 12일×30,000=360,000"},
+    {"rule_id": "SUR-001", "status": "PASS", "reason": "수술비 산정: 4종 1,000,000원"},
+    {"rule_id": "SIL-001", "status": "PASS", "reason": "실손의료비 산정: 2,960,000원"}
+  ],
+  "_agent_expected": {
+    "risk_level": "LOW",
+    "routing_action": "standard_review",
+    "confidence_range": [0.70, 0.90],
+    "cross_validation_anomalies": [],
+    "fraud_risk": false,
+    "complex_factors": {
+      "dual_kcd": "S72.0 (주상병/재해) + I26.9 (부상병/합병증)",
+      "disaster_benefit": "IND002 재해입원일당 적용",
+      "complication_icu": "폐색전증으로 ICU 3일 — 합병증은 주상병 기반 보장",
+      "multi_coverage": "IND+SUR+SIL 3개 담보 동시 적용"
+    }
+  }
+}

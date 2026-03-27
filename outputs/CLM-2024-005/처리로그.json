@@ -1,0 +1,141 @@
+{
+  "log_version": "1.0",
+  "generated_at": "2026-03-27T17:32:46.250028",
+  "claim_summary": {
+    "claim_id": "CLM-2024-005",
+    "policy_no": "POL-20240901-005",
+    "claim_date": "2024-11-07",
+    "accident_date": "2024-11-03",
+    "kcd_code": "J18.9",
+    "diagnosis": "급성 폐렴",
+    "hospital_days": 2,
+    "surgery_name": null,
+    "surgery_code": null,
+    "covered_self_pay": 120000,
+    "non_covered_amount": 30000,
+    "submitted_doc_types": [
+      "보험금청구서",
+      "진단서",
+      "입원확인서",
+      "진료비영수증",
+      "진료비세부내역서"
+    ],
+    "claimed_coverage_types": [
+      "IND",
+      "SIL"
+    ],
+    "parse_confidence_min": 1.0
+  },
+  "decision_summary": {
+    "decision": "부지급",
+    "total_payment": 0,
+    "reviewer_flag": false,
+    "fraud_flag": false,
+    "denial_reason": "면책기간 이내 청구 — 담보: 입원일당 (질병) | 계약일: 2024-09-01 | 면책 종료일: 2024-11-30 | 사고일: 2024-11-03",
+    "policy_clause": "제3조 (보장의 개시일)",
+    "missing_docs": []
+  },
+  "rule_trace": [
+    {
+      "rule_id": "COM-001",
+      "status": "PASS",
+      "reason": "계약 유효, 납입 정상",
+      "value": null,
+      "evidence": {
+        "contract_status": "유효",
+        "premium_status": "정상",
+        "policy_clause": "제14조 (보험계약의 무효·실효)",
+        "clause_title": "계약 유효성 확인",
+        "clause_text": "보험료 납입이 연체되어 납입최고(독촉)기간이 지나도록 보험료를 납입하지 아니한 경우 이 계약은 해당 납입최고(독촉)기간이 끝나는 날의 다음 날부터 효력을 잃습니다. 계약이 실효된 경우 보험금을 지급하지 아니합니다.",
+        "legal_basis": "상법 제650조 (보험료의 지급과 계약의 효력), 보험업법 제95조의2 (보험계약의 부활)"
+      }
+    },
+    {
+      "rule_id": "COM-002",
+      "status": "FAIL",
+      "reason": "면책기간 이내 청구 — 담보: 입원일당 (질병) | 계약일: 2024-09-01 | 면책 종료일: 2024-11-30 | 사고일: 2024-11-03",
+      "value": null,
+      "evidence": {
+        "coverage_code": "IND001",
+        "contract_date": "2024-09-01",
+        "waiting_period_days": 90,
+        "waiting_period_end": "2024-11-30",
+        "accident_date": "2024-11-03",
+        "policy_clause": "제3조 (보장의 개시일)",
+        "clause_title": "면책기간(대기기간) 확인",
+        "clause_text": "이 보험의 보장은 계약일부터 그 날을 포함하여 90일이 지난 날의 다음 날부터 개시합니다. 다만, 재해로 인한 경우에는 계약일부터 보장을 개시합니다.",
+        "legal_basis": "보험업감독규정 제7-56조 (면책기간 설정 기준)"
+      }
+    }
+  ],
+  "parsed_documents": [
+    {
+      "doc_type": "보험금청구서",
+      "parse_mode": "regex",
+      "confidence": 1.0,
+      "extracted_fields": [
+        "diagnosis",
+        "accident_date",
+        "admission_date",
+        "discharge_date",
+        "claimed_coverage_types"
+      ],
+      "parse_errors": []
+    },
+    {
+      "doc_type": "진단서",
+      "parse_mode": "regex",
+      "confidence": 1.0,
+      "extracted_fields": [
+        "kcd_code",
+        "diagnosis",
+        "hospital_days",
+        "accident_date",
+        "admission_date",
+        "discharge_date"
+      ],
+      "parse_errors": []
+    },
+    {
+      "doc_type": "입원확인서",
+      "parse_mode": "regex",
+      "confidence": 1.0,
+      "extracted_fields": [
+        "kcd_code",
+        "diagnosis",
+        "hospital_days",
+        "admission_date",
+        "discharge_date"
+      ],
+      "parse_errors": []
+    },
+    {
+      "doc_type": "진료비영수증",
+      "parse_mode": "regex",
+      "confidence": 1.0,
+      "extracted_fields": [
+        "covered_self_pay",
+        "non_covered",
+        "total_self_pay"
+      ],
+      "parse_errors": []
+    },
+    {
+      "doc_type": "진료비세부내역서",
+      "parse_mode": "regex",
+      "confidence": 1.0,
+      "extracted_fields": [
+        "billing_items"
+      ],
+      "parse_errors": []
+    }
+  ],
+  "confidence": {
+    "parse_confidence": 1.0,
+    "rule_confidence": 1.0,
+    "llm_confidence": 0.5,
+    "cross_validation": 0.5,
+    "overall": 1.0,
+    "risk_level": "VERY_LOW"
+  }
+}

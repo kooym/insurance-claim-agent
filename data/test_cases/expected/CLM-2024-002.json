@@ -1,0 +1,98 @@
+{
+  "claim_id": "CLM-2024-002",
+  "decision": "검토필요",
+  "total_payment": 1716000,
+  "expected_payment_date": "2024-11-27",
+  "payment_deadline_note": "접수일 2024-11-22 기준 3영업일 후 지급 예정일(참고): 2024-11-27 (토·일·공휴일 제외, 상법 제732조·지급기한 기준 문서 참조)",
+  "breakdown": {
+    "SIL-001": {
+      "coverage_code": "SIL001",
+      "coverage_name": "실손의료비 (입원)",
+      "silson_generation": 3,
+      "care_type": "입원",
+      "covered_self_pay": 420000,
+      "non_covered_amount": 1100000,
+      "non_covered_capped": 1100000,
+      "sil_4gen_cap_details": [],
+      "copay_rate_covered": 0.2,
+      "copay_rate_non_covered": 0.2,
+      "copay_applied": 304000,
+      "benefit_amount": 1216000,
+      "formula": "(급여 420,000 × 80%) + (비급여 1,100,000 × 80%) = 1,216,000원"
+    },
+    "SUR-001": {
+      "coverage_code": "SUR001",
+      "surgery_code": "8510",
+      "surgery_name": "유방 종양 절제술",
+      "surgery_class": 3,
+      "benefit_amount": 500000,
+      "formula": "3종 수술비 정액 500,000원",
+      "inferred_from_kcd": false,
+      "kcd_candidates_used": []
+    }
+  },
+  "reviewer_flag": true,
+  "reviewer_reason": "비급여 비중 72.4% — 임계값(60%) 초과. 비급여 항목 적정성 검토 필요.",
+  "missing_docs": [],
+  "denial_reason": null,
+  "policy_clause": null,
+  "fraud_investigation_flag": false,
+  "fraud_investigation_reason": null,
+  "applied_rules": [
+    {
+      "rule_id": "COM-001",
+      "status": "PASS",
+      "reason": "계약 유효, 납입 정상",
+      "value": null
+    },
+    {
+      "rule_id": "COM-002",
+      "status": "PASS",
+      "reason": "면책기간 경과 확인 — 사고일: 2024-11-22",
+      "value": null
+    },
+    {
+      "rule_id": "COM-003",
+      "status": "PASS",
+      "reason": "면책사유 해당 없음 — KCD: D24 (유방의 양성 신생물)",
+      "value": null
+    },
+    {
+      "rule_id": "COM-004",
+      "status": "PASS",
+      "reason": "중복·단기가입·반복 청구 징후 없음",
+      "value": null
+    },
+    {
+      "rule_id": "DOC-CHECK",
+      "status": "PASS",
+      "reason": "서류 완비 (5건 제출)",
+      "value": null
+    },
+    {
+      "rule_id": "IND-001",
+      "status": "SKIP",
+      "reason": "IND 담보 미청구 (청구서 미체크)",
+      "value": null
+    },
+    {
+      "rule_id": "SIL-001",
+      "status": "PASS",
+      "reason": "실손 3세대 (입원) — (급여 420,000 × 80%) + (비급여 1,100,000 × 80%) = 1,216,000원",
+      "value": 1216000.0
+    },
+    {
+      "rule_id": "SUR-001",
+      "status": "PASS",
+      "reason": "수술비 3종 — 유방 종양 절제술 → 500,000원",
+      "value": 500000.0
+    },
+    {
+      "rule_id": "FRD-007",
+      "status": "FLAGGED",
+      "reason": "비급여 비중 72.4% — 임계값(60%) 초과. 비급여 항목 적정성 검토 필요.",
+      "value": 0.7236842105263158
+    }
+  ],
+  "generated_at": "2026-03-19T08:43:44.764774"
+}

@@ -1,0 +1,52 @@
+{
+  "claim_id": "CLM-2024-004",
+  "decision": "보류",
+  "total_payment": 0,
+  "expected_payment_date": "2024-12-03",
+  "payment_deadline_note": "접수일 2024-11-28 기준 3영업일 후 지급 예정일(참고): 2024-12-03 (토·일·공휴일 제외, 상법 제732조·지급기한 기준 문서 참조)",
+  "breakdown": {},
+  "reviewer_flag": false,
+  "reviewer_reason": null,
+  "missing_docs": [
+    "수술확인서",
+    "진료비세부내역서",
+    "진료비영수증"
+  ],
+  "denial_reason": null,
+  "policy_clause": null,
+  "fraud_investigation_flag": false,
+  "fraud_investigation_reason": null,
+  "applied_rules": [
+    {
+      "rule_id": "COM-001",
+      "status": "PASS",
+      "reason": "계약 유효, 납입 정상",
+      "value": null
+    },
+    {
+      "rule_id": "COM-002",
+      "status": "PASS",
+      "reason": "면책기간 경과 확인 — 사고일: 2024-11-28",
+      "value": null
+    },
+    {
+      "rule_id": "COM-003",
+      "status": "PASS",
+      "reason": "면책사유 해당 없음 — KCD: C73 (갑상선암)",
+      "value": null
+    },
+    {
+      "rule_id": "COM-004",
+      "status": "PASS",
+      "reason": "중복·단기가입·반복 청구 징후 없음",
+      "value": null
+    },
+    {
+      "rule_id": "DOC-CHECK",
+      "status": "FAIL",
+      "reason": "필수 서류 미제출: 수술확인서, 진료비세부내역서, 진료비영수증",
+      "value": null
+    }
+  ],
+  "generated_at": "2026-03-19T08:43:44.773931"
+}

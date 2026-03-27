@@ -1,0 +1,30 @@
+{
+  "claim_id": "CLM-2024-005",
+  "decision": "부지급",
+  "total_payment": 0,
+  "expected_payment_date": "2024-11-12",
+  "payment_deadline_note": "접수일 2024-11-07 기준 3영업일 후 지급 예정일(참고): 2024-11-12 (토·일·공휴일 제외, 상법 제732조·지급기한 기준 문서 참조)",
+  "breakdown": {},
+  "reviewer_flag": false,
+  "reviewer_reason": null,
+  "missing_docs": [],
+  "denial_reason": "면책기간 이내 청구 — 담보: 입원일당 (질병) | 계약일: 2024-09-01 | 면책 종료일: 2024-11-30 | 사고일: 2024-11-03",
+  "policy_clause": null,
+  "fraud_investigation_flag": false,
+  "fraud_investigation_reason": null,
+  "applied_rules": [
+    {
+      "rule_id": "COM-001",
+      "status": "PASS",
+      "reason": "계약 유효, 납입 정상",
+      "value": null
+    },
+    {
+      "rule_id": "COM-002",
+      "status": "FAIL",
+      "reason": "면책기간 이내 청구 — 담보: 입원일당 (질병) | 계약일: 2024-09-01 | 면책 종료일: 2024-11-30 | 사고일: 2024-11-03",
+      "value": null
+    }
+  ],
+  "generated_at": "2026-03-19T08:43:44.779159"
+}

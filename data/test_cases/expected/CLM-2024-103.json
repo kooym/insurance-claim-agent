@@ -1,0 +1,48 @@
+{
+  "claim_id": "CLM-2024-103",
+  "decision": "검토필요",
+  "total_payment": 4682000,
+  "breakdown": {
+    "IND-001": {
+      "claim_nature": "질병",
+      "kcd_code": "S33.5",
+      "hospital_days_claimed": 14,
+      "payable_days": 10,
+      "benefit_amount": 300000,
+      "formula": "(14일 - 면책4일) × 30,000원 = 10일 × 30,000원 = 300,000원",
+      "_note": "단순 요추 염좌에 14일 장기 입원 — 과잉 입원 의심"
+    },
+    "SIL-001": {
+      "coverage_code": "SIL001",
+      "coverage_name": "실손의료비 (입원)",
+      "silson_generation": 4,
+      "covered_self_pay": 490000,
+      "non_covered_amount": 5700000,
+      "copay_rate_covered": 0.2,
+      "copay_rate_non_covered": 0.3,
+      "benefit_amount": 3997000,
+      "formula": "(급여 490,000 × 80%) + (비급여 5,700,000 × 70%) = 392,000 + 3,990,000 → 4세대 비급여한도 적용",
+      "_note": "비급여 비중 76.7% — 60% 임계값 대폭 초과"
+    }
+  },
+  "reviewer_flag": true,
+  "reviewer_reason": "사기의심 복합플래그: (1) 단순 요추 염좌(S33.5)에 14일 장기입원, (2) 비급여 비중 76.7%, (3) 12개월 내 동일부위 5회째 청구, (4) 1인실 차액 2,800,000원",
+  "missing_docs": [],
+  "denial_reason": null,
+  "applied_rules": [
+    {"rule_id": "COM-001", "status": "PASS", "reason": "계약 유효, 납입 정상"},
+    {"rule_id": "COM-002", "status": "PASS", "reason": "면책기간 경과 확인"},
+    {"rule_id": "COM-003", "status": "PASS", "reason": "면책사유 해당 없음 — KCD: S33.5"},
+    {"rule_id": "COM-004", "status": "FLAGGED", "reason": "12개월 내 동일부위 반복청구 5회"},
+    {"rule_id": "IND-001", "status": "FLAGGED", "reason": "과잉입원 의심: 단순 염좌 14일"},
+    {"rule_id": "SIL-001", "status": "FLAGGED", "reason": "비급여 비중 76.7% — 임계값(60%) 초과"}
+  ],
+  "_agent_expected": {
+    "risk_level": "CRITICAL",
+    "routing_action": "mandatory_hold",
+    "confidence_max": 0.45,
+    "cross_validation_anomalies": [],
+    "fraud_risk": true,
+    "fraud_flags": ["excessive_hospitalization", "high_non_covered_ratio", "repeated_claims_same_area"]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "_comment": "HIRA 기준 비급여 항목코드 — 4세대 실손 3대 비급여 특약 연간 한도 매핑",
+  "_source": "HIRA 수가코드 기준, 2025",
+  "_usage": "rule_sil() Phase2 — 진료비세부내역서 항목코드 파싱 후 항목별 한도 적용",
+
+  "noncover_categories": {
+    "도수치료_체외충격파_증식치료": {
+      "item_codes": ["MX121", "MX122", "MX126", "MX127", "MX128"],
+      "item_names": ["도수치료", "체외충격파", "증식치료"],
+      "annual_limit_4gen": 3500000,
+      "max_sessions_4gen": 50,
+      "copay_rate_4gen": 0.30,
+      "note": "매 10회마다 병적 완화 효과 입증 필요"
+    },
+    "비급여주사료": {
+      "item_codes": ["GH901", "GH902", "GH903", "GH904", "GH905", "GH9XX"],
+      "item_names": ["비급여 주사료", "영양주사", "비타민주사"],
+      "annual_limit_4gen": 2500000,
+      "max_sessions_4gen": 50,
+      "copay_rate_4gen": 0.30,
+      "note": "약사법령상 허가 사항에 따라 투여된 경우만 보장 — 식약처 DUR 연동"
+    },
+    "MRI_MRA": {
+      "item_codes": ["HB501", "HB502", "HB503", "HB601", "HB602", "HB5XX", "HB6XX"],
+      "item_names": ["MRI", "MRA", "뇌MRI", "척추MRI"],
+      "annual_limit_4gen": 3000000,
+      "max_sessions_4gen": null,
+      "copay_rate_4gen": 0.30,
+      "note": "횟수 제한 없음, 연간 한도만 적용"
+    }
+  },
+
+  "code_prefix_mapping": {
+    "_desc": "항목코드 prefix → 카테고리 매핑 (정확 코드 없을 때 fallback)",
+    "MX12": "도수치료_체외충격파_증식치료",
+    "GH9": "비급여주사료",
+    "HB5": "MRI_MRA",
+    "HB6": "MRI_MRA"
+  }
+}

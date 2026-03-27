@@ -1,0 +1,148 @@
+{
+  "_comment": "KCD 코드 기반 면책·특이 분류 맵 — 현대해상 약관 제2조 및 업계 표준 기반",
+  "_source": "현대해상 약관 제2조 제1항 (보험금을 지급하지 않는 사유), 2024.05 현대해상 공시기준",
+  "_usage": "COM-003 룰에서 KCD 앞 3~4자리로 prefix 매칭하여 판정",
+
+  "absolute_exclusions": {
+    "_desc": "절대적 면책 — 해당 시 무조건 부지급",
+    "alcohol": {
+      "codes": ["F10", "K70"],
+      "desc": "알코올 사용장애 및 알코올성 간질환",
+      "detail": {
+        "F10": "알코올 사용장애 (F10.0~F10.9 전체)",
+        "K70.0": "알코올성 지방간",
+        "K70.1": "알코올성 간염",
+        "K70.2": "알코올성 섬유증 및 경화증",
+        "K70.3": "알코올성 간경변증",
+        "K70.4": "알코올성 간부전",
+        "K70.9": "상세불명의 알코올성 간질환"
+      },
+      "policy_clause": "제2조 제1항 제3호",
+      "denial_message": "알코올 관련 질환으로 약관 면책사유에 해당합니다."
+    },
+    "drugs": {
+      "codes": ["F11", "F12", "F13", "F14", "F15", "F16", "F18", "F19"],
+      "desc": "마약·약물 사용장애",
+      "detail": {
+        "F11": "아편계 사용장애",
+        "F12": "칸나비노이드 사용장애",
+        "F13": "진정·수면제 사용장애",
+        "F14": "코카인 사용장애",
+        "F15": "기타 흥분제 사용장애",
+        "F16": "환각제 사용장애",
+        "F18": "흡입제 사용장애",
+        "F19": "복합약물 사용장애"
+      },
+      "policy_clause": "제2조 제1항 제3호",
+      "denial_message": "약물 관련 질환으로 약관 면책사유에 해당합니다."
+    },
+    "intentional_self_harm": {
+      "codes": ["X60", "X61", "X62", "X63", "X64", "X65", "X66", "X67", "X68", "X69",
+                "X70", "X71", "X72", "X73", "X74", "X75", "X76", "X77", "X78", "X79",
+                "X80", "X81", "X82", "X83", "X84"],
+      "desc": "고의적 자해 (자살 및 자살 시도)",
+      "policy_clause": "제2조 제1항 제1호",
+      "denial_message": "고의적 자해(자살 시도)로 약관 면책사유에 해당합니다."
+    },
+    "cosmetic": {
+      "codes": ["Z41.1"],
+      "desc": "미용 목적 성형수술",
+      "policy_clause": "제2조 제2항",
+      "denial_message": "미용 목적 시술로 치료 목적 의료비가 아닙니다.",
+      "note": "치료와 동시 시행 여부 확인 필요 — FRD-005 연동"
+    }
+  },
+
+  "conditional_exclusions": {
+    "_desc": "조건부 면책 — 담당자 확인 또는 추가 서류 필요",
+    "mental_disorder": {
+      "codes": ["F00", "F01", "F02", "F03", "F04", "F05", "F06", "F07", "F09",
+                "F20", "F21", "F22", "F23", "F24", "F25", "F28", "F29",
+                "F30", "F31", "F32", "F33", "F34", "F38", "F39",
+                "F40", "F41", "F42", "F43", "F44", "F45", "F48",
+                "F50", "F51", "F52", "F53", "F54", "F55", "F59",
+                "F60", "F61", "F62", "F63", "F64", "F65", "F66", "F68", "F69",
+                "F70", "F71", "F72", "F73", "F74", "F78", "F79",
+                "F80", "F81", "F82", "F83", "F84", "F88", "F89",
+                "F90", "F91", "F92", "F93", "F94", "F95", "F98", "F99"],
+      "desc": "정신 및 행동 장애",
+      "condition": "정신질환 특약 가입 여부 확인 후 판단",
+      "action": "CHECK_COVERAGE",
+      "coverage_code": "MENTAL_ILLNESS_RIDER"
+    },
+    "korean_medicine": {
+      "codes": [],
+      "desc": "한방 치료 입원",
+      "condition": "한방 특약 가입 여부 확인",
+      "action": "CHECK_COVERAGE",
+      "coverage_code": "KOREAN_MED_RIDER",
+      "note": "한방 치료 청구 시 원무과 서류에 'KM' 또는 '한의원' 확인"
+    },
+    "preexisting_condition": {
+      "desc": "기왕증 (계약 전 발생 질환)",
+      "condition": "계약일 이전 진단/치료 이력 존재 시 감액 또는 부지급 가능",
+      "action": "MANUAL_REVIEW",
+      "note": "청약서 고지의무 위반 여부와 연계하여 판단"
+    },
+    "congenital": {
+      "codes": ["Q00", "Q01", "Q02", "Q03", "Q04", "Q05", "Q06", "Q07", "Q10", "Q11", "Q12", "Q13", "Q14", "Q15", "Q16", "Q17", "Q18", "Q20", "Q21", "Q22", "Q23", "Q24", "Q25", "Q26", "Q27", "Q28", "Q30", "Q31", "Q32", "Q33", "Q34", "Q35", "Q36", "Q37", "Q38", "Q39", "Q40", "Q41", "Q42", "Q43", "Q44", "Q45", "Q50", "Q51", "Q52", "Q53", "Q54", "Q55", "Q56", "Q60", "Q61", "Q62", "Q63", "Q64", "Q65", "Q66", "Q67", "Q68", "Q69", "Q70", "Q71", "Q72", "Q73", "Q74", "Q75", "Q76", "Q77", "Q78", "Q79", "Q80", "Q81", "Q82", "Q83", "Q84", "Q85", "Q86", "Q87", "Q89", "Q90", "Q91", "Q92", "Q93", "Q95", "Q96", "Q97", "Q98", "Q99"],
+      "desc": "선천기형·선천이상 (Q계열)",
+      "condition": "계약 전 존재 여부 확인 — 기왕증과 동일 처리",
+      "action": "MANUAL_REVIEW",
+      "policy_clause": "제2조 (기왕증 관련)",
+      "note": "Q계열: 선천성 기형. 청약 시 고지 여부와 연계하여 판단. 특약(선천기형) 가입 시 보장 가능."
+    }
+  },
+
+  "_conditional_processing_logic": {
+    "_desc": "조건부면책 처리 로직 (rule_engine.py COM-003 참조)",
+    "mental_disorder": "IF KCD in F계열 (F10,F11~F19 제외) THEN check MENTAL_ILLNESS_RIDER; if not subscribed → FAIL",
+    "korean_medicine": "IF doc_type contains '한방' or 'KM' THEN check KOREAN_MED_RIDER; if not subscribed → FAIL",
+    "cosmetic_Z41.1": "IF KCD=Z41.1 AND 치료목적 아님 THEN FAIL (absolute). IF 치료+미용 혼재 THEN FRD-005 manual split",
+    "congenital_Q": "IF KCD in Q계열 THEN check preexisting; if 계약전 진단 → MANUAL_REVIEW or 감액"
+  },
+
+  "waiting_period_rules": {
+    "_desc": "면책기간 — 사고 유형별 적용",
+    "disease": {
+      "waiting_days": 90,
+      "applies_to": ["입원일당(질병)", "실손의료비", "수술비", "암진단금"],
+      "exception": "재해(사고)는 면책기간 없음"
+    },
+    "cancer": {
+      "waiting_days": 90,
+      "applies_to": ["암진단금", "암입원일당", "암수술비"]
+    },
+    "accident": {
+      "waiting_days": 0,
+      "applies_to": ["입원일당(재해)", "실손의료비(재해)"]
+    }
+  },
+
+  "non_medical_exclusions": {
+    "_desc": "비급여 중 보장 제외 항목 (실손 미보장)",
+    "items": [
+      {"code": "Z41.1", "desc": "미용 목적 성형"},
+      {"code": "Z02", "desc": "건강진단, 예방접종"},
+      {"code": "Z76.2", "desc": "건강 검진(예방 목적)"},
+      {"desc": "비처방 의약품 구입비"},
+      {"desc": "선택진료비 (해당 특약 미가입 시)"},
+      {"desc": "상급병실 차액 (해당 특약 미가입 시)"},
+      {"desc": "간병비 (간병 특약 미가입 시)"}
+    ]
+  },
+
+  "auto_pay_eligible": {
+    "_desc": "면책 사유 없는 일반 질병 — 자동 지급 가능 코드 예시",
+    "common_diseases": [
+      {"code": "K35.8", "desc": "급성 충수염", "exclusion": false},
+      {"code": "D24",   "desc": "유방 양성 신생물", "exclusion": false},
+      {"code": "J18.9", "desc": "상세불명의 폐렴", "exclusion": false},
+      {"code": "C73",   "desc": "갑상선 악성 신생물", "exclusion": false, "note": "암 특약 연동"},
+      {"code": "M54.5", "desc": "요통", "exclusion": false},
+      {"code": "I10",   "desc": "본태성 고혈압", "exclusion": false},
+      {"code": "E11",   "desc": "제2형 당뇨병", "exclusion": false},
+      {"code": "J06.9", "desc": "급성 상기도 감염", "exclusion": false}
+    ]
+  }
+}

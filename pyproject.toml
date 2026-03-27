@@ -1,0 +1,13 @@
+[project]
+name = "insurance-claim-agent"
+version = "1.0.0"
+description = "보험금 자동 산정 Agent"
+requires-python = ">=3.11,<3.14"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "--tb=short -q"
+filterwarnings = [
+    "ignore::DeprecationWarning:chromadb.*",
+]

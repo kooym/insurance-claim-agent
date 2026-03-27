@@ -1,0 +1,52 @@
+# ── 환경 변수 (절대 커밋 금지) ────────────────────────────────
+.env
+.env.*
+.streamlit/secrets.toml
+
+# ── Python ────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# ── 가상환경 ───────────────────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+
+# ── 런타임 생성 ──────────────────────────────────────────────
+data/vectorstore/
+!data/vectorstore/.gitkeep
+data/agent_usage.json
+data/uploads/
+data/users.json
+outputs/*/decision.json
+outputs/audit.log
+
+# ── 테스트 / 개발 도구 ───────────────────────────────────────
+tests/
+tools/
+
+# ── IDE ───────────────────────────────────────────────────────
+.idea/
+.vscode/
+.cursor/
+*.swp
+*.swo
+.DS_Store
+
+# ── pytest 캐시 ────────────────────────────────────────────────
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ── 기타 ──────────────────────────────────────────────────────
+run.sh
+보험금산정Agent.*

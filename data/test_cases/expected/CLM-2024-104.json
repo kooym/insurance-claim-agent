@@ -1,0 +1,37 @@
+{
+  "claim_id": "CLM-2024-104",
+  "decision": "일부지급",
+  "total_payment": 840000,
+  "breakdown": {
+    "SIL-001": {
+      "coverage_code": "SIL001",
+      "coverage_name": "실손의료비 (입원)",
+      "silson_generation": 3,
+      "covered_self_pay": 350000,
+      "non_covered_amount": 700000,
+      "copay_rate_covered": 0.2,
+      "copay_rate_non_covered": 0.2,
+      "benefit_amount": 840000,
+      "formula": "(급여 350,000 × 80%) + (비급여 700,000 × 80%) = 280,000 + 560,000 = 840,000원"
+    }
+  },
+  "reviewer_flag": true,
+  "reviewer_reason": "안검하수(H02.4) — 미용 목적 수술과 기능적 장애 교정술의 경계선 사례. 진단서 MRD1 수치(우 1.5mm/좌 2.0mm, 정상 3.0mm↑)로 기능적 근거 존재하나, 약관 미용목적 면책 조항 해석 필요.",
+  "missing_docs": [],
+  "denial_reason": null,
+  "applied_rules": [
+    {"rule_id": "COM-001", "status": "PASS", "reason": "계약 유효, 납입 정상"},
+    {"rule_id": "COM-002", "status": "PASS", "reason": "면책기간 경과 확인"},
+    {"rule_id": "COM-003", "status": "FLAGGED", "reason": "H02.4 안검하수 — 미용목적 면책 해당 여부 확인 필요"},
+    {"rule_id": "SUR-001", "status": "FLAGGED", "reason": "수술 목적(미용 vs 기능적) 확인 필요"},
+    {"rule_id": "SIL-001", "status": "PASS", "reason": "실손의료비 산정 완료"}
+  ],
+  "_agent_expected": {
+    "risk_level": "MEDIUM",
+    "routing_action": "enhanced_review",
+    "confidence_range": [0.50, 0.75],
+    "cross_validation_anomalies": [],
+    "fraud_risk": false,
+    "interpretation_ambiguity": "cosmetic_vs_functional"
+  }
+}

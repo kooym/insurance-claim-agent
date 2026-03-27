@@ -1,0 +1,160 @@
+{
+  "log_version": "1.0",
+  "generated_at": "2026-03-27T17:32:46.246843",
+  "claim_summary": {
+    "claim_id": "CLM-2024-004",
+    "policy_no": "POL-20190220-004",
+    "claim_date": "2024-11-28",
+    "accident_date": "2024-11-28",
+    "kcd_code": "C73",
+    "diagnosis": "갑상선암",
+    "hospital_days": 5,
+    "surgery_name": "갑상선 전절제술 시행",
+    "surgery_code": null,
+    "covered_self_pay": null,
+    "non_covered_amount": null,
+    "submitted_doc_types": [
+      "보험금청구서",
+      "진단서"
+    ],
+    "claimed_coverage_types": [
+      "SUR",
+      "SIL"
+    ],
+    "parse_confidence_min": 1.0
+  },
+  "decision_summary": {
+    "decision": "보류",
+    "total_payment": 0,
+    "reviewer_flag": false,
+    "fraud_flag": false,
+    "denial_reason": null,
+    "policy_clause": null,
+    "missing_docs": [
+      "수술확인서",
+      "진료비세부내역서",
+      "진료비영수증"
+    ]
+  },
+  "rule_trace": [
+    {
+      "rule_id": "COM-001",
+      "status": "PASS",
+      "reason": "계약 유효, 납입 정상",
+      "value": null,
+      "evidence": {
+        "contract_status": "유효",
+        "premium_status": "정상",
+        "policy_clause": "제14조 (보험계약의 무효·실효)",
+        "clause_title": "계약 유효성 확인",
+        "clause_text": "보험료 납입이 연체되어 납입최고(독촉)기간이 지나도록 보험료를 납입하지 아니한 경우 이 계약은 해당 납입최고(독촉)기간이 끝나는 날의 다음 날부터 효력을 잃습니다. 계약이 실효된 경우 보험금을 지급하지 아니합니다.",
+        "legal_basis": "상법 제650조 (보험료의 지급과 계약의 효력), 보험업법 제95조의2 (보험계약의 부활)"
+      }
+    },
+    {
+      "rule_id": "COM-002",
+      "status": "PASS",
+      "reason": "면책기간 경과 확인 — 사고일: 2024-11-28",
+      "value": null,
+      "evidence": {
+        "accident_date": "2024-11-28",
+        "policy_clause": "제3조 (보장의 개시일)",
+        "clause_title": "면책기간(대기기간) 확인",
+        "clause_text": "이 보험의 보장은 계약일부터 그 날을 포함하여 90일이 지난 날의 다음 날부터 개시합니다. 다만, 재해로 인한 경우에는 계약일부터 보장을 개시합니다.",
+        "legal_basis": "보험업감독규정 제7-56조 (면책기간 설정 기준)"
+      }
+    },
+    {
+      "rule_id": "COM-003",
+      "status": "PASS",
+      "reason": "면책사유 해당 없음 — KCD: C73 (갑상선암)",
+      "value": null,
+      "evidence": {
+        "kcd_code": "C73",
+        "policy_clause": "제2조 제1항 (보험금을 지급하지 않는 사유)",
+        "clause_title": "절대적 면책사유 확인 (KCD 기반)",
+        "clause_text": "회사는 다음 각 호의 사유로 생긴 입원·수술에 대하여는 보험금을 지급하지 아니합니다. 1. 피보험자가 고의로 자신을 해친 경우, 2. 보험수익자가 고의로 피보험자를 해친 경우, 3. 피보험자의 음주·약물 사용으로 인한 질병 또는 사고.",
+        "legal_basis": "상법 제659조 (보험자의 면책사유), 상법 제660조 (자살면책)"
+      }
+    },
+    {
+      "rule_id": "COM-004",
+      "status": "PASS",
+      "reason": "중복·단기가입·반복 청구 징후 없음",
+      "value": null,
+      "evidence": {
+        "policy_clause": "제5조 제3항 (중복 청구의 확인)",
+        "clause_title": "중복·반복 청구 확인",
+        "clause_text": "회사는 동일한 사고에 대하여 이미 보험금이 지급된 경우 중복하여 지급하지 아니하며, 단기간 내 반복적인 청구가 확인될 경우 사실 확인을 위하여 보험금 지급을 유보할 수 있습니다.",
+        "legal_basis": "보험업법 제102조의3 (보험사기행위의 금지), 보험업감독규정 제7-63조 (보험사기 조사)"
+      }
+    },
+    {
+      "rule_id": "DOC-CHECK",
+      "status": "FAIL",
+      "reason": "필수 서류 미제출: 수술확인서, 진료비세부내역서, 진료비영수증",
+      "value": null,
+      "evidence": {
+        "check_basis": [
+          "SUR",
+          "SIL"
+        ],
+        "required": [
+          "수술확인서",
+          "진단서",
+          "진료비세부내역서",
+          "진료비영수증"
+        ],
+        "submitted": [
+          "보험금청구서",
+          "진단서"
+        ],
+        "missing": [
+          "수술확인서",
+          "진료비세부내역서",
+          "진료비영수증"
+        ],
+        "policy_clause": "제5조 제2항 (보험금 청구 시 구비서류)",
+        "clause_title": "청구 서류 완비 확인",
+        "clause_text": "보험금 청구 시 다음 서류를 제출하여야 합니다: 보험금청구서, 사고증명서(진단서, 입원확인서, 수술확인서 등), 진료비영수증 및 세부내역서. 서류가 미비한 경우 보완을 요청하며, 보완 시까지 보험금 지급이 유보됩니다.",
+        "legal_basis": "상법 제657조 (보험사고 발생의 통지의무), 보험업감독규정 제7-59조 (보험금 지급절차)"
+      }
+    }
+  ],
+  "parsed_documents": [
+    {
+      "doc_type": "보험금청구서",
+      "parse_mode": "regex",
+      "confidence": 1.0,
+      "extracted_fields": [
+        "diagnosis",
+        "accident_date",
+        "claimed_coverage_types"
+      ],
+      "parse_errors": []
+    },
+    {
+      "doc_type": "진단서",
+      "parse_mode": "regex",
+      "confidence": 1.0,
+      "extracted_fields": [
+        "kcd_code",
+        "diagnosis",
+        "hospital_days",
+        "accident_date",
+        "admission_date",
+        "discharge_date",
+        "surgery_name"
+      ],
+      "parse_errors": []
+    }
+  ],
+  "confidence": {
+    "parse_confidence": 1.0,
+    "rule_confidence": 1.0,
+    "llm_confidence": 0.5,
+    "cross_validation": 0.5,
+    "overall": 1.0,
+    "risk_level": "VERY_LOW"
+  }
+}

@@ -1,0 +1,478 @@
+{
+  "_meta": {
+    "description": "각 시나리오의 기대 결과 — 테스트 검증용. Agent 실행 전 절대 읽히면 안 됨.",
+    "usage": "tests/ 폴더의 자동화 테스트에서만 로드. src/agents/ 코드에서는 참조 금지."
+  },
+  "expected_results": {
+    "CLM-2024-001": {
+      "claim_id": "CLM-2024-001",
+      "decision": "지급",
+      "triggered_rules": [
+        "COM-001:PASS",
+        "COM-002:PASS",
+        "COM-003:PASS",
+        "DOC-CHECK:PASS",
+        "IND-001:PASS",
+        "SIL-001:PASS",
+        "SUR-001:SKIP",
+        "FRD-007:PASS"
+      ],
+      "breakdown": {
+        "IND-001": {
+          "coverage_code": "IND001",
+          "hospital_days_claimed": 5,
+          "payable_days": 1,
+          "waiting_days": 4,
+          "daily_benefit": 30000,
+          "benefit_amount": 30000,
+          "formula": "1일×30,000"
+        },
+        "SIL-001": {
+          "coverage_code": "SIL001",
+          "silson_generation": 3,
+          "covered_self_pay": 350000,
+          "non_covered": 180000,
+          "copay_rate_covered": 0.2,
+          "copay_rate_non_covered": 0.2,
+          "benefit_amount": 424000,
+          "formula": "(350,000 × 80%) + (180,000 × 80%) = 280,000 + 144,000 = 424,000원"
+        }
+      },
+      "total_payment": 454000,
+      "reviewer_flag": false,
+      "notes": "입원일당: 질병 면책 4일 반영(5일→1일 지급). 3세대 실손. 수술비(SUR) 미청구 → SKIP."
+    },
+    "CLM-2024-002": {
+      "claim_id": "CLM-2024-002",
+      "decision": "검토필요",
+      "triggered_rules": [
+        "COM-001:PASS",
+        "COM-002:PASS",
+        "COM-003:PASS",
+        "DOC-CHECK:PASS",
+        "IND-001:SKIP",
+        "SIL-001:PASS",
+        "SUR-001:PASS",
+        "FRD-007:FLAGGED"
+      ],
+      "breakdown": {
+        "SUR-001": {
+          "coverage_code": "SUR001",
+          "surgery_code": "8510",
+          "surgery_name": "유방 종양 절제술",
+          "surgery_class": 3,
+          "max_class_covered": 3,
+          "benefit_amount": 500000,
+          "formula": "3종 수술비 정액 500,000원"
+        },
+        "SIL-001": {
+          "coverage_code": "SIL001",
+          "silson_generation": 3,
+          "covered_self_pay": 420000,
+          "non_covered": 1100000,
+          "copay_rate_covered": 0.2,
+          "copay_rate_non_covered": 0.2,
+          "benefit_amount": 1216000,
+          "formula": "(420,000 × 80%) + (1,100,000 × 80%) = 336,000 + 880,000 = 1,216,000원",
+          "non_covered_ratio": 0.724
+        }
+      },
+      "total_payment": 1716000,
+      "reviewer_flag": true,
+      "reviewer_reason": "비급여 비중 72.4% — 임계값(60%) 초과. 비급여 항목 적정성 검토 필요.",
+      "reviewer_rule": "FRD-007"
+    },
+    "CLM-2024-003": {
+      "claim_id": "CLM-2024-003",
+      "decision": "부지급",
+      "triggered_rules": [
+        "COM-001:PASS",
+        "COM-003:FAIL"
+      ],
+      "stop_rule": "COM-003",
+      "denial_kcd": "K70.3",
+      "denial_reason": "면책사유 해당 — 알코올성 간경변증 (K70.3). 약관 제2조 제1항 제3호.",
+      "total_payment": 0,
+      "reviewer_flag": false,
+      "additional_flag": "FRD-003 — 동일 면책사유 반복 청구 이력 있음. 사기 조사팀 통보 검토."
+    },
+    "CLM-2024-004": {
+      "claim_id": "CLM-2024-004",
+      "decision": "보류 (서류보완)",
+      "triggered_rules": [
+        "COM-001:PASS",
+        "DOC-CHECK:INCOMPLETE"
+      ],
+      "missing_docs": [
+        "수술확인서",
+        "진료비영수증",
+        "진료비세부내역서"
+      ],
+      "total_payment": 0,
+      "reviewer_flag": false,
+      "pending_reason": "필수 서류 미제출. 수술비 청구에 수술확인서 및 진료비 서류 필요."
+    },
+    "CLM-2024-005": {
+      "claim_id": "CLM-2024-005",
+      "decision": "부지급",
+      "triggered_rules": [
+        "COM-001:PASS",
+        "COM-002:FAIL"
+      ],
+      "stop_rule": "COM-002",
+      "denial_reason": "면책기간 이내 청구 — 계약일(2024-09-01) + 90일 = 면책기간 종료일(2024-11-30). 청구일(2024-11-03) < 면책기간 종료일.",
+      "total_payment": 0,
+      "reviewer_flag": false
+    },
+    "CLM-2024-006": {
+      "claim_id": "CLM-2024-006",
+      "decision": "지급",
+      "_scenario": "4세대 실손 지급 검증 — 면책기간 경과 후 정상 지급",
+      "triggered_rules": [
+        "COM-001:PASS",
+        "COM-002:PASS",
+        "COM-003:PASS",
+        "DOC-CHECK:PASS",
+        "IND-001:FAIL",
+        "SIL-001:PASS",
+        "SUR-001:SKIP",
+        "FRD-007:PASS"
+      ],
+      "breakdown": {
+        "SIL-001": {
+          "coverage_code": "SIL001",
+          "silson_generation": 4,
+          "care_type": "입원",
+          "covered_self_pay": 200000,
+          "non_covered": 85000,
+          "copay_rate_covered": 0.2,
+          "copay_rate_non_covered": 0.3,
+          "copay_applied": 65500,
+          "benefit_amount": 219500,
+          "formula": "(급여 200,000 × 80%) + (비급여 85,000 × 70%) = 160,000 + 59,500 = 219,500원"
+        }
+      },
+      "total_payment": 219500,
+      "reviewer_flag": false,
+      "notes": "4세대 실손. 입원 3일은 질병 면책 4일로 입원일당 0. 세부내역서 파싱·비급여 주사 한도 반영."
+    },
+    "CLM-2024-007": {
+      "claim_id": "CLM-2024-007",
+      "decision": "검토필요",
+      "_scenario": "조건부면책(정신질환 F32) — CONDITIONAL-EXCLUSION FLAGGED",
+      "triggered_rules": [
+        "COM-001:PASS",
+        "COM-002:PASS",
+        "COM-003:CONDITIONAL",
+        "COM-004:PASS",
+        "DOC-CHECK:PASS",
+        "IND-001:PASS",
+        "SIL-001:PASS",
+        "SUR-001:SKIP"
+      ],
+      "breakdown": {
+        "IND-001": {
+          "coverage_code": "IND001",
+          "hospital_days_claimed": 7,
+          "waiting_days": 4,
+          "payable_days": 3,
+          "daily_benefit": 30000,
+          "benefit_amount": 90000,
+          "formula": "7일 - 면책4일 = 3일 × 30,000 = 90,000원"
+        },
+        "SIL-001": {
+          "coverage_code": "SIL001",
+          "silson_generation": 3,
+          "covered_self_pay": 380000,
+          "non_covered": 220000,
+          "copay_rate_covered": 0.2,
+          "copay_rate_non_covered": 0.2,
+          "benefit_amount": 480000,
+          "formula": "(380,000 × 80%) + (220,000 × 80%) = 304,000 + 176,000 = 480,000원"
+        }
+      },
+      "total_payment": 570000,
+      "reviewer_flag": true,
+      "reviewer_reason": "정신질환(F32) 조건부면책 — 정신질환 특약(MENTAL_ILLNESS_RIDER) 미가입 확인 필요.",
+      "reviewer_rule": "CONDITIONAL-EXCLUSION",
+      "notes": "F32 우울 에피소드는 절대면책이 아닌 조건부면책. 정신질환 특약 가입 여부에 따라 지급/부지급 결정."
+    },
+    "CLM-2024-008": {
+      "claim_id": "CLM-2024-008",
+      "decision": "지급",
+      "_scenario": "재해 입원(W10 낙상) — 면책기간 0일 + IND 재해(면책1일) + SUR 4종",
+      "triggered_rules": [
+        "COM-001:PASS",
+        "COM-002:PASS",
+        "COM-003:PASS",
+        "COM-004:PASS",
+        "DOC-CHECK:PASS",
+        "IND-001:PASS",
+        "SIL-001:PASS",
+        "SUR-001:PASS",
+        "FRD-007:PASS"
+      ],
+      "breakdown": {
+        "IND-001": {
+          "coverage_code": "IND002",
+          "coverage_type": "재해",
+          "hospital_days_claimed": 8,
+          "waiting_days": 1,
+          "payable_days": 7,
+          "daily_benefit": 30000,
+          "benefit_amount": 210000,
+          "formula": "재해: 8일 - 면책1일 = 7일 × 30,000 = 210,000원"
+        },
+        "SIL-001": {
+          "coverage_code": "SIL001",
+          "silson_generation": 3,
+          "covered_self_pay": 950000,
+          "non_covered": 380000,
+          "copay_rate_covered": 0.2,
+          "copay_rate_non_covered": 0.2,
+          "benefit_amount": 1064000,
+          "formula": "(950,000 × 80%) + (380,000 × 80%) = 760,000 + 304,000 = 1,064,000원"
+        },
+        "SUR-001": {
+          "coverage_code": "SUR001",
+          "surgery_code": "N0601",
+          "surgery_name": "대퇴골 골절 관혈적 정복술 및 내고정술",
+          "surgery_class": 4,
+          "max_class_covered": 5,
+          "benefit_amount": 1000000,
+          "formula": "4종 수술비 정액 1,000,000원 (max 5종 이내)"
+        }
+      },
+      "total_payment": 2274000,
+      "reviewer_flag": false,
+      "notes": "재해(W10) → 면책기간 0일, IND 재해담보 면책일수 1일. SUR 4종 ≤ max 5종 → 정상 지급."
+    },
+    "CLM-2024-009": {
+      "claim_id": "CLM-2024-009",
+      "decision": "일부지급",
+      "_scenario": "SUR max_class=3인데 4종 수술 → SUR FAIL, IND+SIL만 지급",
+      "triggered_rules": [
+        "COM-001:PASS",
+        "COM-002:PASS",
+        "COM-003:PASS",
+        "COM-004:PASS",
+        "DOC-CHECK:PASS",
+        "IND-001:PASS",
+        "SIL-001:PASS",
+        "SUR-001:FAIL",
+        "FRD-007:PASS"
+      ],
+      "breakdown": {
+        "IND-001": {
+          "coverage_code": "IND001",
+          "hospital_days_claimed": 5,
+          "waiting_days": 4,
+          "payable_days": 1,
+          "daily_benefit": 30000,
+          "benefit_amount": 30000,
+          "formula": "5일 - 면책4일 = 1일 × 30,000 = 30,000원"
+        },
+        "SIL-001": {
+          "coverage_code": "SIL001",
+          "silson_generation": 3,
+          "covered_self_pay": 1200000,
+          "non_covered": 650000,
+          "copay_rate_covered": 0.2,
+          "copay_rate_non_covered": 0.2,
+          "benefit_amount": 1480000,
+          "formula": "(1,200,000 × 80%) + (650,000 × 80%) = 960,000 + 520,000 = 1,480,000원"
+        },
+        "SUR-001": {
+          "coverage_code": "SUR001",
+          "surgery_code": "2101",
+          "surgery_name": "갑상선 전절제술",
+          "surgery_class": 4,
+          "max_class_covered": 3,
+          "benefit_amount": 0,
+          "formula": "수술 4종 > 가입 max 3종 → 지급 불가",
+          "denial_reason": "수술분류 4종이 가입 담보 최대 3종을 초과합니다."
+        }
+      },
+      "total_payment": 1510000,
+      "reviewer_flag": false,
+      "notes": "SUR 4종 > max_class 3종 → 수술비 0원. IND+SIL만 지급하여 일부지급 판정."
+    },
+    "CLM-2024-010": {
+      "claim_id": "CLM-2024-010",
+      "decision": "부지급",
+      "_scenario": "계약 실효(미납) → COM-001 FAIL → 부지급",
+      "triggered_rules": [
+        "COM-001:FAIL"
+      ],
+      "stop_rule": "COM-001",
+      "denial_reason": "계약 상태 이상: '실효' — 보험료 미납으로 계약이 실효되어 유효 계약이 아닙니다.",
+      "total_payment": 0,
+      "reviewer_flag": false,
+      "notes": "COM-001에서 즉시 중단. 계약 status='실효', premium_status='미납'."
+    },
+    "CLM-2024-011": {
+      "claim_id": "CLM-2024-011",
+      "decision": "지급",
+      "_scenario": "4세대 실손 비급여 도수치료 한도캡 + billing_items 적용",
+      "triggered_rules": [
+        "COM-001:PASS",
+        "COM-002:PASS",
+        "COM-003:PASS",
+        "COM-004:PASS",
+        "DOC-CHECK:PASS",
+        "IND-001:PASS",
+        "SIL-001:PASS",
+        "SUR-001:SKIP",
+        "FRD-007:PASS"
+      ],
+      "breakdown": {
+        "IND-001": {
+          "coverage_code": "IND001",
+          "hospital_days_claimed": 5,
+          "waiting_days": 4,
+          "payable_days": 1,
+          "daily_benefit": 30000,
+          "benefit_amount": 30000,
+          "formula": "5일 - 면책4일 = 1일 × 30,000 = 30,000원"
+        },
+        "SIL-001": {
+          "coverage_code": "SIL001",
+          "silson_generation": 4,
+          "care_type": "입원",
+          "covered_self_pay": 450000,
+          "non_covered": 1800000,
+          "copay_rate_covered": 0.2,
+          "copay_rate_non_covered": 0.3,
+          "benefit_amount": 1390000,
+          "formula": "급여 (450,000 × 80%) + 비급여 (한도캡 적용 후 × 70%) = 360,000 + 1,030,000 = 1,390,000원",
+          "non_covered_cap_detail": {
+            "도수치료_체외충격파_증식치료": {
+              "claimed": 1250000,
+              "annual_limit": 3500000,
+              "ytd_used": 1200000,
+              "remaining": 2300000,
+              "applied": 1250000,
+              "note": "잔여 한도 내 → 전액 인정"
+            },
+            "비급여주사료": {
+              "claimed": 150000,
+              "annual_limit": 2500000,
+              "applied": 150000
+            },
+            "기타_비급여": {
+              "상급병실차액": 300000,
+              "MRI판독료": 100000
+            }
+          }
+        }
+      },
+      "total_payment": 1420000,
+      "reviewer_flag": false,
+      "notes": "4세대 실손: 급여 80%, 비급여 70%. 도수치료·체외충격파·증식치료 합산 1,250,000원 — 연간 한도 3,500,000원 중 YTD 1,200,000원 사용 → 잔여 2,300,000원 > 청구액 → 전액 인정."
+    },
+    "CLM-2024-012": {
+      "claim_id": "CLM-2024-012",
+      "decision": "검토필요",
+      "_scenario": "수술코드 미제공 → KCD(D24) 추론 → SUR-001 FLAGGED",
+      "triggered_rules": [
+        "COM-001:PASS",
+        "COM-002:PASS",
+        "COM-003:PASS",
+        "COM-004:PASS",
+        "DOC-CHECK:PASS",
+        "IND-001:FAIL",
+        "SIL-001:PASS",
+        "SUR-001:FLAGGED",
+        "FRD-007:PASS"
+      ],
+      "breakdown": {
+        "IND-001": {
+          "coverage_code": "IND001",
+          "hospital_days_claimed": 3,
+          "waiting_days": 4,
+          "payable_days": 0,
+          "benefit_amount": 0,
+          "formula": "3일 < 면책4일 → 지급 대상 0일"
+        },
+        "SIL-001": {
+          "coverage_code": "SIL001",
+          "silson_generation": 3,
+          "covered_self_pay": 520000,
+          "non_covered": 350000,
+          "copay_rate_covered": 0.2,
+          "copay_rate_non_covered": 0.2,
+          "benefit_amount": 696000,
+          "formula": "(520,000 × 80%) + (350,000 × 80%) = 416,000 + 280,000 = 696,000원"
+        },
+        "SUR-001": {
+          "coverage_code": "SUR001",
+          "surgery_code": null,
+          "surgery_name": "유방 종양 절제술",
+          "kcd_inference": {
+            "kcd": "D24",
+            "candidates": ["8510(3종)", "8530(3종)", "8800(2종)"],
+            "note": "수술코드 미기재 → KCD(D24) 기반 후보 매칭만 가능, 확정 불가"
+          },
+          "benefit_amount": 30000,
+          "formula": "KCD 추론 후보 기준 최소 보장(검토 필요)"
+        }
+      },
+      "total_payment": 726000,
+      "reviewer_flag": true,
+      "reviewer_reason": "수술코드 미기재 — KCD(D24) 기반 후보 매칭(8510/8530/8800). 실제 수술명·코드 확인 후 수술비 확정 필요.",
+      "reviewer_rule": "SUR-001",
+      "notes": "IND는 면책4일 > 입원3일로 0원. SUR은 수술코드 null → KCD 추론 → FLAGGED. SIL만 확정 지급."
+    },
+    "CLM-2024-013": {
+      "claim_id": "CLM-2024-013",
+      "decision": "검토필요",
+      "_scenario": "반복청구(COM-004) + 만성질환(CHRONIC-ONSET) 이중 플래그",
+      "triggered_rules": [
+        "COM-001:PASS",
+        "COM-002:PASS",
+        "COM-003:PASS",
+        "COM-004:FLAGGED",
+        "DOC-CHECK:PASS",
+        "IND-001:PASS",
+        "SIL-001:PASS",
+        "SUR-001:SKIP"
+      ],
+      "breakdown": {
+        "IND-001": {
+          "coverage_code": "IND001",
+          "hospital_days_claimed": 6,
+          "waiting_days": 4,
+          "payable_days": 2,
+          "daily_benefit": 30000,
+          "benefit_amount": 60000,
+          "formula": "6일 - 면책4일 = 2일 × 30,000 = 60,000원"
+        },
+        "SIL-001": {
+          "coverage_code": "SIL001",
+          "silson_generation": 3,
+          "covered_self_pay": 350000,
+          "non_covered": 180000,
+          "copay_rate_covered": 0.2,
+          "copay_rate_non_covered": 0.2,
+          "benefit_amount": 424000,
+          "formula": "(350,000 × 80%) + (180,000 × 80%) = 280,000 + 144,000 = 424,000원"
+        }
+      },
+      "total_payment": 484000,
+      "reviewer_flag": true,
+      "reviewer_reason": "이중 검토 플래그: ① COM-004 반복청구(동일 KCD E11, 365일 내 5건) ② CHRONIC-ONSET 만성질환 발병일 불명(기왕증·고지의무 확인 필요).",
+      "reviewer_rules": ["COM-004", "CHRONIC-ONSET"],
+      "claims_history_summary": {
+        "same_kcd_claims_365d": 4,
+        "total_with_current": 5,
+        "prior_claims": [
+          {"date": "2024-01-15", "kcd": "E11", "paid": 45000},
+          {"date": "2024-04-08", "kcd": "E11", "paid": 180000},
+          {"date": "2024-07-22", "kcd": "E11", "paid": 52000},
+          {"date": "2024-09-30", "kcd": "E11", "paid": 573000}
+        ]
+      },
+      "notes": "반복청구: 동일 E11로 365일 내 4건 기존 + 현재건 = 5건. 만성질환: 발병일 '정확한 시점 불명(만성 경과)' → 기왕증 여부·고지의무(상법 제651조) 확인 필요."
+    }
+  }
+}

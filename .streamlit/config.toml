@@ -1,0 +1,17 @@
+# ── Streamlit 테마 설정 (Toss 디자인 원칙 기반) ──────────────────
+# 참고: https://docs.streamlit.io/develop/concepts/configuration/theming
+
+[theme]
+primaryColor = "#1B64DA"                 # Toss Blue — 버튼, 링크, 슬라이더
+backgroundColor = "#FFFFFF"              # 메인 배경 — 깨끗한 화이트
+secondaryBackgroundColor = "#F9FAFB"     # 사이드바·카드 배경 — 밝은 그레이
+textColor = "#191F28"                    # 본문 텍스트 — 진한 그레이 (Toss Gray 900)
+font = "sans serif"                      # 시스템 산세리프 (Pretendard 호환)
+
+[server]
+headless = true
+port = 8501
+address = "localhost"
+
+[browser]
+gatherUsageStats = false

@@ -1,0 +1,38 @@
+# ══════════════════════════════════════════════════════════════════
+#  Docker 빌드 제외 목록
+# ══════════════════════════════════════════════════════════════════
+
+# Git / VCS
+.git
+.gitignore
+
+# Python 가상환경 & 캐시
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# 환경 변수 (민감 정보 — 런타임에 주입)
+.env
+.env.*
+
+# 테스트 / 개발 도구
+tests/
+tools/
+
+# 런타임 생성 디렉토리 (컨테이너에서 새로 생성)
+outputs/
+data/vectorstore/
+data/uploads/
+data/agent_usage.json
+
+# 로컬 실행 스크립트
+run.sh
+
+# IDE / OS
+.cursor*
+.DS_Store
+*.swp
+
+# macOS 앱 번들
+보험금산정Agent.*

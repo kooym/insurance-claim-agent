@@ -1,0 +1,1114 @@
+{
+  "_meta": {
+    "version": "2.0",
+    "description": "계약 DB — policy_no 키 기반 직접 조회. contracts[policy_no] 로 O(1) 접근.",
+    "lookup": "contracts_db['contracts'][policy_no]",
+    "coverage_lookup": "contracts_db['contracts'][policy_no]['coverages'][coverage_code]"
+  },
+  "contracts": {
+    "POL-20200315-001": {
+      "policy_no": "POL-20200315-001",
+      "product_code": "SM2020",
+      "product_name": "무배당 스마트종합보험 (2020년형)",
+      "silson_generation": 3,
+      "contract_date": "2020-03-15",
+      "expiry_date": "2050-03-14",
+      "status": "유효",
+      "premium_status": "정상",
+      "insured": {
+        "name": "홍길동",
+        "birth_date": "1979-05-12",
+        "gender": "M",
+        "id_masked": "790512-1******"
+      },
+      "coverages": {
+        "IND001": {
+          "coverage_code": "IND001",
+          "coverage_name": "입원일당 (질병)",
+          "type": "IND",
+          "daily_benefit": 30000,
+          "max_days_per_claim": 180,
+          "max_days_per_year": 365,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2020-06-13",
+          "status": "유효"
+        },
+        "IND002": {
+          "coverage_code": "IND002",
+          "coverage_name": "입원일당 (재해)",
+          "type": "IND",
+          "daily_benefit": 30000,
+          "max_days_per_claim": 180,
+          "max_days_per_year": 365,
+          "waiting_period_days": 0,
+          "waiting_period_end": null,
+          "status": "유효"
+        },
+        "SIL001": {
+          "coverage_code": "SIL001",
+          "coverage_name": "실손의료비 (입원)",
+          "type": "SIL",
+          "silson_generation": 3,
+          "copay_rate_covered": 0.2,
+          "copay_rate_non_covered": 0.2,
+          "min_copay": 10000,
+          "annual_limit": 50000000,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2020-06-13",
+          "status": "유효"
+        },
+        "SIL002": {
+          "coverage_code": "SIL002",
+          "coverage_name": "실손의료비 (통원)",
+          "type": "SIL",
+          "silson_generation": 3,
+          "copay_rate_covered": 0.2,
+          "copay_rate_non_covered": 0.2,
+          "min_copay": 10000,
+          "per_visit_limit": 300000,
+          "annual_visit_limit": 180,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2020-06-13",
+          "status": "유효"
+        },
+        "SUR001": {
+          "coverage_code": "SUR001",
+          "coverage_name": "수술비 (1종~5종)",
+          "type": "SUR",
+          "surgery_benefit_by_class": {
+            "1": 100000,
+            "2": 300000,
+            "3": 500000,
+            "4": 1000000,
+            "5": 2000000
+          },
+          "max_class_covered": 5,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2020-06-13",
+          "status": "유효"
+        }
+      },
+      "ytd_usage": {
+        "insurance_year": "2024",
+        "inpatient_paid_amount": 0,
+        "inpatient_days_used": 0,
+        "outpatient_visits_used": 3
+      },
+      "product_generation": 3
+    },
+    "POL-20180601-002": {
+      "policy_no": "POL-20180601-002",
+      "product_code": "SM2018",
+      "product_name": "무배당 스마트종합보험 (2018년형)",
+      "silson_generation": 3,
+      "contract_date": "2018-06-01",
+      "expiry_date": "2048-05-31",
+      "status": "유효",
+      "premium_status": "정상",
+      "insured": {
+        "name": "김영희",
+        "birth_date": "1991-07-23",
+        "gender": "F",
+        "id_masked": "910723-2******"
+      },
+      "coverages": {
+        "SUR001": {
+          "coverage_code": "SUR001",
+          "coverage_name": "수술비 (1종~3종)",
+          "type": "SUR",
+          "surgery_benefit_by_class": {
+            "1": 100000,
+            "2": 300000,
+            "3": 500000
+          },
+          "max_class_covered": 3,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2018-08-30",
+          "status": "유효"
+        },
+        "SIL001": {
+          "coverage_code": "SIL001",
+          "coverage_name": "실손의료비 (입원)",
+          "type": "SIL",
+          "silson_generation": 3,
+          "copay_rate_covered": 0.2,
+          "copay_rate_non_covered": 0.2,
+          "min_copay": 10000,
+          "annual_limit": 50000000,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2018-08-30",
+          "status": "유효"
+        },
+        "IND001": {
+          "coverage_code": "IND001",
+          "coverage_name": "입원일당 (질병)",
+          "type": "IND",
+          "daily_benefit": 30000,
+          "max_days_per_claim": 180,
+          "max_days_per_year": 365,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2018-08-30",
+          "status": "유효"
+        }
+      },
+      "ytd_usage": {
+        "insurance_year": "2024",
+        "inpatient_paid_amount": 0,
+        "inpatient_days_used": 0,
+        "outpatient_visits_used": 5
+      },
+      "product_generation": 3
+    },
+    "POL-20220901-003": {
+      "policy_no": "POL-20220901-003",
+      "product_code": "SM2022",
+      "product_name": "무배당 스마트종합보험 (2022년형)",
+      "silson_generation": 4,
+      "contract_date": "2022-09-01",
+      "expiry_date": "2052-08-31",
+      "status": "유효",
+      "premium_status": "정상",
+      "insured": {
+        "name": "이철수",
+        "birth_date": "1966-10-30",
+        "gender": "M",
+        "id_masked": "661030-1******"
+      },
+      "coverages": {
+        "IND001": {
+          "coverage_code": "IND001",
+          "coverage_name": "입원일당 (질병)",
+          "type": "IND",
+          "daily_benefit": 30000,
+          "max_days_per_claim": 180,
+          "max_days_per_year": 365,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2022-11-30",
+          "status": "유효"
+        },
+        "SIL001": {
+          "coverage_code": "SIL001",
+          "coverage_name": "실손의료비 (입원)",
+          "type": "SIL",
+          "silson_generation": 4,
+          "copay_rate_covered": 0.2,
+          "copay_rate_non_covered": 0.3,
+          "min_copay": 10000,
+          "annual_limit": 50000000,
+          "annual_copay_ceiling": 2000000,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2022-11-30",
+          "status": "유효",
+          "non_covered_annual_limits": {
+            "도수치료_체외충격파_증식치료": {
+              "annual_limit": 3500000,
+              "max_sessions": 50
+            },
+            "비급여주사료": {
+              "annual_limit": 2500000,
+              "max_sessions": 50
+            },
+            "MRI_MRA": {
+              "annual_limit": 3000000
+            }
+          },
+          "discount_surcharge_enabled": true
+        }
+      },
+      "ytd_usage": {
+        "insurance_year": "2024",
+        "inpatient_paid_amount": 0,
+        "inpatient_days_used": 0,
+        "outpatient_visits_used": 12
+      },
+      "product_generation": 4
+    },
+    "POL-20190220-004": {
+      "policy_no": "POL-20190220-004",
+      "product_code": "SM2019",
+      "product_name": "무배당 스마트종합보험 (2019년형)",
+      "silson_generation": 3,
+      "contract_date": "2019-02-20",
+      "expiry_date": "2049-02-19",
+      "status": "유효",
+      "premium_status": "정상",
+      "insured": {
+        "name": "박지수",
+        "birth_date": "1983-11-15",
+        "gender": "F",
+        "id_masked": "831115-2******"
+      },
+      "coverages": {
+        "SUR001": {
+          "coverage_code": "SUR001",
+          "coverage_name": "수술비 (1종~5종)",
+          "type": "SUR",
+          "surgery_benefit_by_class": {
+            "1": 100000,
+            "2": 300000,
+            "3": 500000,
+            "4": 1000000,
+            "5": 2000000
+          },
+          "max_class_covered": 5,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2019-05-21",
+          "status": "유효"
+        },
+        "SIL001": {
+          "coverage_code": "SIL001",
+          "coverage_name": "실손의료비 (입원)",
+          "type": "SIL",
+          "silson_generation": 3,
+          "copay_rate_covered": 0.2,
+          "copay_rate_non_covered": 0.2,
+          "min_copay": 10000,
+          "annual_limit": 50000000,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2019-05-21",
+          "status": "유효"
+        },
+        "IND001": {
+          "coverage_code": "IND001",
+          "coverage_name": "입원일당 (질병)",
+          "type": "IND",
+          "daily_benefit": 30000,
+          "max_days_per_claim": 180,
+          "max_days_per_year": 365,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2019-05-21",
+          "status": "유효"
+        }
+      },
+      "ytd_usage": {
+        "insurance_year": "2024",
+        "inpatient_paid_amount": 0,
+        "inpatient_days_used": 0,
+        "outpatient_visits_used": 8
+      },
+      "product_generation": 3
+    },
+    "POL-20240901-005": {
+      "policy_no": "POL-20240901-005",
+      "product_code": "SM2024",
+      "product_name": "무배당 스마트종합보험 (2024년형)",
+      "silson_generation": 4,
+      "contract_date": "2024-09-01",
+      "expiry_date": "2054-08-31",
+      "status": "유효",
+      "premium_status": "정상",
+      "insured": {
+        "name": "최민준",
+        "birth_date": "1995-03-15",
+        "gender": "M",
+        "id_masked": "950315-1******"
+      },
+      "coverages": {
+        "IND001": {
+          "coverage_code": "IND001",
+          "coverage_name": "입원일당 (질병)",
+          "type": "IND",
+          "daily_benefit": 30000,
+          "max_days_per_claim": 180,
+          "max_days_per_year": 365,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2024-11-30",
+          "status": "유효"
+        },
+        "SIL001": {
+          "coverage_code": "SIL001",
+          "coverage_name": "실손의료비 (입원)",
+          "type": "SIL",
+          "silson_generation": 4,
+          "copay_rate_covered": 0.2,
+          "copay_rate_non_covered": 0.3,
+          "min_copay": 10000,
+          "annual_limit": 50000000,
+          "annual_copay_ceiling": 2000000,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2024-11-30",
+          "status": "유효",
+          "non_covered_annual_limits": {
+            "도수치료_체외충격파_증식치료": {
+              "annual_limit": 3500000,
+              "max_sessions": 50
+            },
+            "비급여주사료": {
+              "annual_limit": 2500000,
+              "max_sessions": 50
+            },
+            "MRI_MRA": {
+              "annual_limit": 3000000
+            }
+          },
+          "discount_surcharge_enabled": true
+        }
+      },
+      "ytd_usage": {
+        "insurance_year": "2024",
+        "inpatient_paid_amount": 0,
+        "inpatient_days_used": 0,
+        "outpatient_visits_used": 0
+      },
+      "product_generation": 4
+    },
+
+    "POL-20210315-006": {
+      "policy_no": "POL-20210315-006",
+      "product_code": "SM2021",
+      "product_name": "무배당 스마트종합보험 (2021년형)",
+      "silson_generation": 3,
+      "contract_date": "2021-03-15",
+      "expiry_date": "2051-03-14",
+      "status": "유효",
+      "premium_status": "정상",
+      "insured": {
+        "name": "정하은",
+        "birth_date": "1988-04-22",
+        "gender": "F",
+        "id_masked": "880422-2******"
+      },
+      "coverages": {
+        "IND001": {
+          "coverage_code": "IND001",
+          "coverage_name": "입원일당 (질병)",
+          "type": "IND",
+          "daily_benefit": 30000,
+          "max_days_per_claim": 180,
+          "max_days_per_year": 365,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2021-06-13",
+          "status": "유효"
+        },
+        "SIL001": {
+          "coverage_code": "SIL001",
+          "coverage_name": "실손의료비 (입원)",
+          "type": "SIL",
+          "silson_generation": 3,
+          "copay_rate_covered": 0.2,
+          "copay_rate_non_covered": 0.2,
+          "min_copay": 10000,
+          "annual_limit": 50000000,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2021-06-13",
+          "status": "유효"
+        }
+      },
+      "_note": "정신질환 특약(MENTAL_ILLNESS_RIDER) 미가입 — CLM-007 조건부면책 테스트용",
+      "ytd_usage": {
+        "insurance_year": "2024",
+        "inpatient_paid_amount": 0,
+        "inpatient_days_used": 0,
+        "outpatient_visits_used": 2
+      },
+      "product_generation": 3
+    },
+
+    "POL-20200801-007": {
+      "policy_no": "POL-20200801-007",
+      "product_code": "SM2020",
+      "product_name": "무배당 스마트종합보험 (2020년형)",
+      "silson_generation": 3,
+      "contract_date": "2020-08-01",
+      "expiry_date": "2050-07-31",
+      "status": "유효",
+      "premium_status": "정상",
+      "insured": {
+        "name": "강태현",
+        "birth_date": "1975-12-03",
+        "gender": "M",
+        "id_masked": "751203-1******"
+      },
+      "coverages": {
+        "IND001": {
+          "coverage_code": "IND001",
+          "coverage_name": "입원일당 (질병)",
+          "type": "IND",
+          "daily_benefit": 30000,
+          "max_days_per_claim": 180,
+          "max_days_per_year": 365,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2020-10-30",
+          "status": "유효"
+        },
+        "IND002": {
+          "coverage_code": "IND002",
+          "coverage_name": "입원일당 (재해)",
+          "type": "IND",
+          "daily_benefit": 30000,
+          "max_days_per_claim": 180,
+          "max_days_per_year": 365,
+          "waiting_period_days": 0,
+          "waiting_period_end": null,
+          "status": "유효"
+        },
+        "SIL001": {
+          "coverage_code": "SIL001",
+          "coverage_name": "실손의료비 (입원)",
+          "type": "SIL",
+          "silson_generation": 3,
+          "copay_rate_covered": 0.2,
+          "copay_rate_non_covered": 0.2,
+          "min_copay": 10000,
+          "annual_limit": 50000000,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2020-10-30",
+          "status": "유효"
+        },
+        "SUR001": {
+          "coverage_code": "SUR001",
+          "coverage_name": "수술비 (1종~5종)",
+          "type": "SUR",
+          "surgery_benefit_by_class": {
+            "1": 100000,
+            "2": 300000,
+            "3": 500000,
+            "4": 1000000,
+            "5": 2000000
+          },
+          "max_class_covered": 5,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2020-10-30",
+          "status": "유효"
+        }
+      },
+      "_note": "IND002(재해) 보유 — CLM-008 재해입원(면책0일) 테스트용",
+      "ytd_usage": {
+        "insurance_year": "2024",
+        "inpatient_paid_amount": 0,
+        "inpatient_days_used": 0,
+        "outpatient_visits_used": 1
+      },
+      "product_generation": 3
+    },
+
+    "POL-20190601-008": {
+      "policy_no": "POL-20190601-008",
+      "product_code": "SM2019",
+      "product_name": "무배당 스마트종합보험 (2019년형)",
+      "silson_generation": 3,
+      "contract_date": "2019-06-01",
+      "expiry_date": "2049-05-31",
+      "status": "유효",
+      "premium_status": "정상",
+      "insured": {
+        "name": "윤서연",
+        "birth_date": "1990-09-18",
+        "gender": "F",
+        "id_masked": "900918-2******"
+      },
+      "coverages": {
+        "IND001": {
+          "coverage_code": "IND001",
+          "coverage_name": "입원일당 (질병)",
+          "type": "IND",
+          "daily_benefit": 30000,
+          "max_days_per_claim": 180,
+          "max_days_per_year": 365,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2019-08-30",
+          "status": "유효"
+        },
+        "SIL001": {
+          "coverage_code": "SIL001",
+          "coverage_name": "실손의료비 (입원)",
+          "type": "SIL",
+          "silson_generation": 3,
+          "copay_rate_covered": 0.2,
+          "copay_rate_non_covered": 0.2,
+          "min_copay": 10000,
+          "annual_limit": 50000000,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2019-08-30",
+          "status": "유효"
+        },
+        "SUR001": {
+          "coverage_code": "SUR001",
+          "coverage_name": "수술비 (1종~3종)",
+          "type": "SUR",
+          "surgery_benefit_by_class": {
+            "1": 100000,
+            "2": 300000,
+            "3": 500000
+          },
+          "max_class_covered": 3,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2019-08-30",
+          "status": "유효"
+        }
+      },
+      "_note": "SUR max_class=3 — CLM-009 4종수술 청구 시 일부지급 테스트용",
+      "ytd_usage": {
+        "insurance_year": "2024",
+        "inpatient_paid_amount": 0,
+        "inpatient_days_used": 0,
+        "outpatient_visits_used": 4
+      },
+      "product_generation": 3
+    },
+
+    "POL-20170101-009": {
+      "policy_no": "POL-20170101-009",
+      "product_code": "SM2017",
+      "product_name": "무배당 스마트종합보험 (2017년형)",
+      "silson_generation": 3,
+      "contract_date": "2017-01-01",
+      "expiry_date": "2047-01-01",
+      "status": "실효",
+      "premium_status": "미납",
+      "insured": {
+        "name": "한동우",
+        "birth_date": "1972-06-28",
+        "gender": "M",
+        "id_masked": "720628-1******"
+      },
+      "coverages": {
+        "IND001": {
+          "coverage_code": "IND001",
+          "coverage_name": "입원일당 (질병)",
+          "type": "IND",
+          "daily_benefit": 30000,
+          "max_days_per_claim": 180,
+          "max_days_per_year": 365,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2017-04-01",
+          "status": "실효"
+        },
+        "SIL001": {
+          "coverage_code": "SIL001",
+          "coverage_name": "실손의료비 (입원)",
+          "type": "SIL",
+          "silson_generation": 3,
+          "copay_rate_covered": 0.2,
+          "copay_rate_non_covered": 0.2,
+          "min_copay": 10000,
+          "annual_limit": 50000000,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2017-04-01",
+          "status": "실효"
+        },
+        "SUR001": {
+          "coverage_code": "SUR001",
+          "coverage_name": "수술비 (1종~5종)",
+          "type": "SUR",
+          "surgery_benefit_by_class": {
+            "1": 100000,
+            "2": 300000,
+            "3": 500000,
+            "4": 1000000,
+            "5": 2000000
+          },
+          "max_class_covered": 5,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2017-04-01",
+          "status": "실효"
+        }
+      },
+      "_note": "계약 실효(미납) — CLM-010 COM-001 FAIL 테스트용",
+      "ytd_usage": {
+        "insurance_year": "2024",
+        "inpatient_paid_amount": 0,
+        "inpatient_days_used": 0,
+        "outpatient_visits_used": 0
+      },
+      "product_generation": 3
+    },
+
+    "POL-20230401-010": {
+      "policy_no": "POL-20230401-010",
+      "product_code": "SM2023",
+      "product_name": "무배당 스마트종합보험 (2023년형)",
+      "silson_generation": 4,
+      "contract_date": "2023-04-01",
+      "expiry_date": "2053-03-31",
+      "status": "유효",
+      "premium_status": "정상",
+      "insured": {
+        "name": "조은비",
+        "birth_date": "1993-01-10",
+        "gender": "F",
+        "id_masked": "930110-2******"
+      },
+      "coverages": {
+        "IND001": {
+          "coverage_code": "IND001",
+          "coverage_name": "입원일당 (질병)",
+          "type": "IND",
+          "daily_benefit": 30000,
+          "max_days_per_claim": 180,
+          "max_days_per_year": 365,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2023-06-30",
+          "status": "유효"
+        },
+        "SIL001": {
+          "coverage_code": "SIL001",
+          "coverage_name": "실손의료비 (입원)",
+          "type": "SIL",
+          "silson_generation": 4,
+          "copay_rate_covered": 0.2,
+          "copay_rate_non_covered": 0.3,
+          "min_copay": 10000,
+          "annual_limit": 50000000,
+          "annual_copay_ceiling": 2000000,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2023-06-30",
+          "status": "유효",
+          "non_covered_annual_limits": {
+            "도수치료_체외충격파_증식치료": {
+              "annual_limit": 3500000,
+              "max_sessions": 50
+            },
+            "비급여주사료": {
+              "annual_limit": 2500000,
+              "max_sessions": 50
+            },
+            "MRI_MRA": {
+              "annual_limit": 3000000
+            }
+          },
+          "discount_surcharge_enabled": true
+        }
+      },
+      "_note": "4세대 실손 비급여한도 — CLM-011 billing_items 한도캡 테스트용. ytd 사용 높음",
+      "ytd_usage": {
+        "insurance_year": "2024",
+        "inpatient_paid_amount": 1200000,
+        "inpatient_days_used": 10,
+        "outpatient_visits_used": 15
+      },
+      "product_generation": 4
+    },
+
+    "POL-20200101-011": {
+      "policy_no": "POL-20200101-011",
+      "product_code": "SM2020",
+      "product_name": "무배당 스마트종합보험 (2020년형)",
+      "silson_generation": 3,
+      "contract_date": "2020-01-01",
+      "expiry_date": "2050-01-01",
+      "status": "유효",
+      "premium_status": "정상",
+      "insured": {
+        "name": "임재혁",
+        "birth_date": "1985-08-14",
+        "gender": "M",
+        "id_masked": "850814-1******"
+      },
+      "coverages": {
+        "IND001": {
+          "coverage_code": "IND001",
+          "coverage_name": "입원일당 (질병)",
+          "type": "IND",
+          "daily_benefit": 30000,
+          "max_days_per_claim": 180,
+          "max_days_per_year": 365,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2020-04-01",
+          "status": "유효"
+        },
+        "SIL001": {
+          "coverage_code": "SIL001",
+          "coverage_name": "실손의료비 (입원)",
+          "type": "SIL",
+          "silson_generation": 3,
+          "copay_rate_covered": 0.2,
+          "copay_rate_non_covered": 0.2,
+          "min_copay": 10000,
+          "annual_limit": 50000000,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2020-04-01",
+          "status": "유효"
+        },
+        "SUR001": {
+          "coverage_code": "SUR001",
+          "coverage_name": "수술비 (1종~5종)",
+          "type": "SUR",
+          "surgery_benefit_by_class": {
+            "1": 100000,
+            "2": 300000,
+            "3": 500000,
+            "4": 1000000,
+            "5": 2000000
+          },
+          "max_class_covered": 5,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2020-04-01",
+          "status": "유효"
+        }
+      },
+      "_note": "SUR(1~5종)+SIL+IND 완비 — CLM-012 수술코드 미제공→KCD추론 테스트용",
+      "ytd_usage": {
+        "insurance_year": "2024",
+        "inpatient_paid_amount": 0,
+        "inpatient_days_used": 0,
+        "outpatient_visits_used": 6
+      },
+      "product_generation": 3
+    },
+
+    "POL-20190901-012": {
+      "policy_no": "POL-20190901-012",
+      "product_code": "SM2019",
+      "product_name": "무배당 스마트종합보험 (2019년형)",
+      "silson_generation": 3,
+      "contract_date": "2019-09-01",
+      "expiry_date": "2049-08-31",
+      "status": "유효",
+      "premium_status": "정상",
+      "insured": {
+        "name": "서지원",
+        "birth_date": "1980-02-05",
+        "gender": "F",
+        "id_masked": "800205-2******"
+      },
+      "coverages": {
+        "IND001": {
+          "coverage_code": "IND001",
+          "coverage_name": "입원일당 (질병)",
+          "type": "IND",
+          "daily_benefit": 30000,
+          "max_days_per_claim": 180,
+          "max_days_per_year": 365,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2019-11-30",
+          "status": "유효"
+        },
+        "SIL001": {
+          "coverage_code": "SIL001",
+          "coverage_name": "실손의료비 (입원)",
+          "type": "SIL",
+          "silson_generation": 3,
+          "copay_rate_covered": 0.2,
+          "copay_rate_non_covered": 0.2,
+          "min_copay": 10000,
+          "annual_limit": 50000000,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2019-11-30",
+          "status": "유효"
+        }
+      },
+      "_note": "IND+SIL만, SUR 미가입 — CLM-013 반복청구(COM-004)+만성질환(CHRONIC-ONSET) 테스트용",
+      "ytd_usage": {
+        "insurance_year": "2024",
+        "inpatient_paid_amount": 850000,
+        "inpatient_days_used": 18,
+        "outpatient_visits_used": 22
+      },
+      "product_generation": 3
+    },
+
+    "POL-20190715-101": {
+      "policy_no": "POL-20190715-101",
+      "product_code": "SM2019",
+      "product_name": "무배당 스마트종합보험 (2019년형)",
+      "silson_generation": 3,
+      "contract_date": "2019-07-15",
+      "expiry_date": "2049-07-14",
+      "status": "유효",
+      "premium_status": "정상",
+      "insured": {
+        "name": "김태호",
+        "birth_date": "1972-08-30",
+        "gender": "M",
+        "id_masked": "720830-1******"
+      },
+      "coverages": {
+        "IND001": {
+          "coverage_code": "IND001",
+          "coverage_name": "입원일당 (질병)",
+          "type": "IND",
+          "daily_benefit": 30000,
+          "max_days_per_claim": 180,
+          "max_days_per_year": 365,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2019-10-13",
+          "status": "유효"
+        },
+        "SIL001": {
+          "coverage_code": "SIL001",
+          "coverage_name": "실손의료비 (입원)",
+          "type": "SIL",
+          "silson_generation": 3,
+          "copay_rate_covered": 0.2,
+          "copay_rate_non_covered": 0.2,
+          "min_copay": 10000,
+          "annual_limit": 50000000,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2019-10-13",
+          "status": "유효"
+        }
+      },
+      "_note": "Agent시나리오 CLM-101 — 고신뢰도 완전자동승인 테스트용. 깨끗한 계약.",
+      "ytd_usage": {
+        "insurance_year": "2024",
+        "inpatient_paid_amount": 0,
+        "inpatient_days_used": 0,
+        "outpatient_visits_used": 2
+      },
+      "product_generation": 3
+    },
+
+    "POL-20210901-102": {
+      "policy_no": "POL-20210901-102",
+      "product_code": "SM2021",
+      "product_name": "무배당 스마트종합보험 (2021년형)",
+      "silson_generation": 3,
+      "contract_date": "2021-09-01",
+      "expiry_date": "2051-08-31",
+      "status": "유효",
+      "premium_status": "정상",
+      "insured": {
+        "name": "박현수",
+        "birth_date": "1986-04-15",
+        "gender": "M",
+        "id_masked": "860415-1******"
+      },
+      "coverages": {
+        "IND001": {
+          "coverage_code": "IND001",
+          "coverage_name": "입원일당 (질병)",
+          "type": "IND",
+          "daily_benefit": 30000,
+          "max_days_per_claim": 180,
+          "max_days_per_year": 365,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2021-11-30",
+          "status": "유효"
+        },
+        "SIL001": {
+          "coverage_code": "SIL001",
+          "coverage_name": "실손의료비 (입원)",
+          "type": "SIL",
+          "silson_generation": 3,
+          "copay_rate_covered": 0.2,
+          "copay_rate_non_covered": 0.2,
+          "min_copay": 10000,
+          "annual_limit": 50000000,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2021-11-30",
+          "status": "유효"
+        }
+      },
+      "_note": "Agent시나리오 CLM-102 — 서류간 정보 불일치(교차검증) 테스트용",
+      "ytd_usage": {
+        "insurance_year": "2024",
+        "inpatient_paid_amount": 0,
+        "inpatient_days_used": 0,
+        "outpatient_visits_used": 3
+      },
+      "product_generation": 3
+    },
+
+    "POL-20230601-103": {
+      "policy_no": "POL-20230601-103",
+      "product_code": "SM2023",
+      "product_name": "무배당 스마트종합보험 (2023년형)",
+      "silson_generation": 4,
+      "contract_date": "2023-06-01",
+      "expiry_date": "2053-05-31",
+      "status": "유효",
+      "premium_status": "정상",
+      "insured": {
+        "name": "이상호",
+        "birth_date": "1977-09-20",
+        "gender": "M",
+        "id_masked": "770920-1******"
+      },
+      "coverages": {
+        "IND001": {
+          "coverage_code": "IND001",
+          "coverage_name": "입원일당 (질병)",
+          "type": "IND",
+          "daily_benefit": 30000,
+          "max_days_per_claim": 180,
+          "max_days_per_year": 365,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2023-08-30",
+          "status": "유효"
+        },
+        "SIL001": {
+          "coverage_code": "SIL001",
+          "coverage_name": "실손의료비 (입원)",
+          "type": "SIL",
+          "silson_generation": 4,
+          "copay_rate_covered": 0.2,
+          "copay_rate_non_covered": 0.3,
+          "min_copay": 10000,
+          "annual_limit": 50000000,
+          "annual_copay_ceiling": 2000000,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2023-08-30",
+          "status": "유효",
+          "non_covered_annual_limits": {
+            "도수치료_체외충격파_증식치료": {
+              "annual_limit": 3500000,
+              "max_sessions": 50
+            },
+            "비급여주사료": {
+              "annual_limit": 2500000,
+              "max_sessions": 50
+            },
+            "MRI_MRA": {
+              "annual_limit": 3000000
+            }
+          },
+          "discount_surcharge_enabled": true
+        }
+      },
+      "_note": "Agent시나리오 CLM-103 — 사기의심 복합플래그(과잉입원+고액비급여+반복청구) 테스트용",
+      "ytd_usage": {
+        "insurance_year": "2024",
+        "inpatient_paid_amount": 2400000,
+        "inpatient_days_used": 35,
+        "outpatient_visits_used": 20
+      },
+      "product_generation": 4
+    },
+
+    "POL-20200301-104": {
+      "policy_no": "POL-20200301-104",
+      "product_code": "SM2020",
+      "product_name": "무배당 스마트종합보험 (2020년형)",
+      "silson_generation": 3,
+      "contract_date": "2020-03-01",
+      "expiry_date": "2050-02-28",
+      "status": "유효",
+      "premium_status": "정상",
+      "insured": {
+        "name": "송미라",
+        "birth_date": "1980-06-10",
+        "gender": "F",
+        "id_masked": "800610-2******"
+      },
+      "coverages": {
+        "IND001": {
+          "coverage_code": "IND001",
+          "coverage_name": "입원일당 (질병)",
+          "type": "IND",
+          "daily_benefit": 30000,
+          "max_days_per_claim": 180,
+          "max_days_per_year": 365,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2020-05-30",
+          "status": "유효"
+        },
+        "SIL001": {
+          "coverage_code": "SIL001",
+          "coverage_name": "실손의료비 (입원)",
+          "type": "SIL",
+          "silson_generation": 3,
+          "copay_rate_covered": 0.2,
+          "copay_rate_non_covered": 0.2,
+          "min_copay": 10000,
+          "annual_limit": 50000000,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2020-05-30",
+          "status": "유효"
+        },
+        "SUR001": {
+          "coverage_code": "SUR001",
+          "coverage_name": "수술비 (1종~5종)",
+          "type": "SUR",
+          "surgery_benefit_by_class": {
+            "1": 100000,
+            "2": 300000,
+            "3": 500000,
+            "4": 1000000,
+            "5": 2000000
+          },
+          "max_class_covered": 5,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2020-05-30",
+          "status": "유효"
+        }
+      },
+      "_note": "Agent시나리오 CLM-104 — 담보해석 경계선(안검하수 미용vs기능) 테스트용",
+      "ytd_usage": {
+        "insurance_year": "2024",
+        "inpatient_paid_amount": 0,
+        "inpatient_days_used": 0,
+        "outpatient_visits_used": 5
+      },
+      "product_generation": 3
+    },
+
+    "POL-20180901-105": {
+      "policy_no": "POL-20180901-105",
+      "product_code": "SM2018",
+      "product_name": "무배당 스마트종합보험 (2018년형)",
+      "silson_generation": 3,
+      "contract_date": "2018-09-01",
+      "expiry_date": "2048-08-31",
+      "status": "유효",
+      "premium_status": "정상",
+      "insured": {
+        "name": "정도윤",
+        "birth_date": "1969-01-15",
+        "gender": "M",
+        "id_masked": "690115-1******"
+      },
+      "coverages": {
+        "IND001": {
+          "coverage_code": "IND001",
+          "coverage_name": "입원일당 (질병)",
+          "type": "IND",
+          "daily_benefit": 30000,
+          "max_days_per_claim": 180,
+          "max_days_per_year": 365,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2018-11-30",
+          "status": "유효"
+        },
+        "IND002": {
+          "coverage_code": "IND002",
+          "coverage_name": "입원일당 (재해)",
+          "type": "IND",
+          "daily_benefit": 30000,
+          "max_days_per_claim": 180,
+          "max_days_per_year": 365,
+          "waiting_period_days": 0,
+          "waiting_period_end": null,
+          "status": "유효"
+        },
+        "SIL001": {
+          "coverage_code": "SIL001",
+          "coverage_name": "실손의료비 (입원)",
+          "type": "SIL",
+          "silson_generation": 3,
+          "copay_rate_covered": 0.2,
+          "copay_rate_non_covered": 0.2,
+          "min_copay": 10000,
+          "annual_limit": 50000000,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2018-11-30",
+          "status": "유효"
+        },
+        "SUR001": {
+          "coverage_code": "SUR001",
+          "coverage_name": "수술비 (1종~5종)",
+          "type": "SUR",
+          "surgery_benefit_by_class": {
+            "1": 100000,
+            "2": 300000,
+            "3": 500000,
+            "4": 1000000,
+            "5": 2000000
+          },
+          "max_class_covered": 5,
+          "waiting_period_days": 90,
+          "waiting_period_end": "2018-11-30",
+          "status": "유효"
+        }
+      },
+      "_note": "Agent시나리오 CLM-105 — 복합담보 혼합판정(재해골절+수술+합병증) 테스트용",
+      "ytd_usage": {
+        "insurance_year": "2024",
+        "inpatient_paid_amount": 0,
+        "inpatient_days_used": 0,
+        "outpatient_visits_used": 4
+      },
+      "product_generation": 3
+    }
+  }
+}

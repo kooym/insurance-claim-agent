@@ -1,0 +1,108 @@
+{
+  "claim_id": "CLM-2024-001",
+  "decision": "지급",
+  "total_payment": 454000,
+  "expected_payment_date": "2024-11-25",
+  "payment_deadline_note": "접수일 2024-11-20 기준 3영업일 후 지급 예정일(참고): 2024-11-25 (토·일·공휴일 제외, 상법 제732조·지급기한 기준 문서 참조)",
+  "breakdown": {
+    "IND-001": {
+      "claim_nature": "질병",
+      "kcd_code": "K35.8",
+      "hospital_days_claimed": 5,
+      "payable_days": 1,
+      "coverages_applied": [
+        {
+          "coverage_code": "IND001",
+          "coverage_name": "입원일당 (질병)",
+          "hospital_days_claimed": 5,
+          "waiting_days": 4,
+          "payable_days": 1,
+          "daily_benefit": 30000,
+          "benefit_amount": 30000,
+          "formula": "(5일 - 면책4일) × 30,000원 = 1일 × 30,000원"
+        }
+      ],
+      "benefit_amount": 30000,
+      "formula": "1일×30,000"
+    },
+    "SIL-001": {
+      "coverage_code": "SIL001",
+      "coverage_name": "실손의료비 (입원)",
+      "silson_generation": 3,
+      "care_type": "입원",
+      "covered_self_pay": 350000,
+      "non_covered_amount": 180000,
+      "non_covered_capped": 180000,
+      "sil_4gen_cap_details": [],
+      "copay_rate_covered": 0.2,
+      "copay_rate_non_covered": 0.2,
+      "copay_applied": 106000,
+      "benefit_amount": 424000,
+      "formula": "(급여 350,000 × 80%) + (비급여 180,000 × 80%) = 424,000원"
+    }
+  },
+  "reviewer_flag": false,
+  "reviewer_reason": null,
+  "missing_docs": [],
+  "denial_reason": null,
+  "policy_clause": null,
+  "fraud_investigation_flag": false,
+  "fraud_investigation_reason": null,
+  "applied_rules": [
+    {
+      "rule_id": "COM-001",
+      "status": "PASS",
+      "reason": "계약 유효, 납입 정상",
+      "value": null
+    },
+    {
+      "rule_id": "COM-002",
+      "status": "PASS",
+      "reason": "면책기간 경과 확인 — 사고일: 2024-11-09",
+      "value": null
+    },
+    {
+      "rule_id": "COM-003",
+      "status": "PASS",
+      "reason": "면책사유 해당 없음 — KCD: K35.8 (급성 충수염)",
+      "value": null
+    },
+    {
+      "rule_id": "COM-004",
+      "status": "PASS",
+      "reason": "중복·단기가입·반복 청구 징후 없음",
+      "value": null
+    },
+    {
+      "rule_id": "DOC-CHECK",
+      "status": "PASS",
+      "reason": "서류 완비 (5건 제출)",
+      "value": null
+    },
+    {
+      "rule_id": "IND-001",
+      "status": "PASS",
+      "reason": "입원일당(질병) — 입원 5일, 면책 차감 후 1일 지급 = 30,000원",
+      "value": 30000.0
+    },
+    {
+      "rule_id": "SIL-001",
+      "status": "PASS",
+      "reason": "실손 3세대 (입원) — (급여 350,000 × 80%) + (비급여 180,000 × 80%) = 424,000원",
+      "value": 424000.0
+    },
+    {
+      "rule_id": "SUR-001",
+      "status": "SKIP",
+      "reason": "SUR 담보 미청구 (청구서 미체크)",
+      "value": null
+    },
+    {
+      "rule_id": "FRD-007",
+      "status": "PASS",
+      "reason": "비급여 비중 34.0% — 정상 범위",
+      "value": null
+    }
+  ],
+  "generated_at": "2026-03-19T08:43:44.759091"
+}

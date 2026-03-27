@@ -1,0 +1,107 @@
+{
+  "_comment": "실손의료보험 세대 판별 기준 및 세대별 자기부담금 산정 공식",
+  "_source": "금융위원회 고시, 금감원 실손보험 개편 로드맵",
+
+  "generation_rules": [
+    {
+      "generation": 1,
+      "period": "~2009-09-30",
+      "name": "1세대 실손 (구실손)",
+      "inpatient": {
+        "covered_copay_rate": 0.0,
+        "non_covered_copay_rate": 0.0,
+        "coverage_rate": 1.0,
+        "min_copay": 0,
+        "note": "자기부담금 없음, 급여+비급여 100% 보장"
+      },
+      "outpatient": {
+        "coverage_rate": 1.0,
+        "min_copay": 0,
+        "note": "자기부담금 없음"
+      },
+      "annual_limit_inpatient": 50000000,
+      "annual_limit_outpatient_per_visit": 250000
+    },
+    {
+      "generation": 2,
+      "period": "2009-10-01 ~ 2012-03-31",
+      "name": "2세대 실손",
+      "inpatient": {
+        "covered_copay_rate": 0.10,
+        "non_covered_copay_rate": 0.20,
+        "coverage_rate": 0.90,
+        "note": "급여 10% / 비급여 20% 자기부담"
+      },
+      "outpatient": {
+        "covered_copay_rate": 0.20,
+        "non_covered_copay_rate": 0.20,
+        "min_copay_clinic": 5000,
+        "min_copay_hospital": 10000
+      },
+      "annual_limit_inpatient": 50000000,
+      "annual_limit_outpatient_per_visit": 250000
+    },
+    {
+      "generation": 3,
+      "period": "2012-04-01 ~ 2021-06-30",
+      "name": "3세대 실손 (표준화 실손)",
+      "inpatient": {
+        "covered_copay_rate": 0.20,
+        "non_covered_copay_rate": 0.20,
+        "min_copay": 10000,
+        "formula": "(급여본인부담 + 비급여) × 80%",
+        "note": "급여·비급여 구분 없이 본인부담 합산 후 80% 지급"
+      },
+      "outpatient": {
+        "covered_copay_rate": 0.20,
+        "non_covered_copay_rate": 0.20,
+        "min_copay_clinic": 10000,
+        "min_copay_hospital": 20000,
+        "formula_covered": "MAX(급여본인부담 - MAX(급여×20%, 의원1만/병원2만), 0)",
+        "formula_non_covered": "MAX(비급여 - MAX(비급여×20%, 의원1만/병원2만), 0)"
+      },
+      "annual_limit_inpatient": 50000000,
+      "annual_limit_outpatient_per_visit": 300000,
+      "annual_limit_outpatient_visits": 180,
+      "used_in_scenarios": ["CLM-001 (POL-20200315-001)", "CLM-002 (POL-20180601-002)", "CLM-004 (POL-20190220-004)"]
+    },
+    {
+      "generation": 4,
+      "period": "2021-07-01 ~ 현재",
+      "name": "4세대 실손 (현행 표준)",
+      "inpatient": {
+        "covered_copay_rate": 0.20,
+        "non_covered_copay_rate": 0.30,
+        "formula_covered": "급여본인부담 × 80%",
+        "formula_non_covered": "비급여 × 70% (비급여 특약 가입 시)",
+        "annual_copay_ceiling": 2000000,
+        "note": "급여와 비급여 완전 분리. 비급여는 특약으로 별도 가입"
+      },
+      "outpatient": {
+        "covered_copay_rate": 0.20,
+        "non_covered_copay_rate": 0.30,
+        "min_copay_covered_clinic": 10000,
+        "min_copay_covered_hospital": 20000,
+        "min_copay_non_covered": 30000,
+        "formula_covered": "MAX(급여본인부담 - MAX(급여×20%, 의원1만/병원2만), 0)",
+        "formula_non_covered": "MAX(비급여 - MAX(비급여×30%, 3만원), 0)"
+      },
+      "discount_surcharge": {
+        "enabled": true,
+        "note": "비급여 사용량에 따라 다음 해 보험료 할인/할증 (±300% 범위)",
+        "no_claim_discount": -10,
+        "high_claim_surcharge": 300
+      },
+      "annual_limit_inpatient": 50000000,
+      "annual_limit_outpatient_per_visit": 300000,
+      "annual_limit_outpatient_visits": 180,
+      "used_in_scenarios": ["CLM-003 (POL-20220901-003)", "CLM-005 (POL-20240901-005)"]
+    }
+  ],
+
+  "generation_detection": {
+    "_desc": "계약일 기준 세대 자동 판별 로직 (Agent 코드에서 사용)",
+    "logic": "IF contract_date <= '2009-09-30' → gen=1 ELIF <= '2012-03-31' → gen=2 ELIF <= '2021-06-30' → gen=3 ELSE → gen=4",
+    "important": "계약일 기준으로 판별. 갱신 계약은 최초 계약일 기준 유지"
+  }
+}

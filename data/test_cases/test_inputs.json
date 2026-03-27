@@ -1,0 +1,236 @@
+{
+  "_meta": {
+    "description": "각 시나리오의 테스트 인풋 — 서류 파일 목록과 계약번호만 포함. 금액/판정은 포함하지 않음.",
+    "input_files_root": "data/sample_docs/{claim_id}/"
+  },
+  "test_inputs": [
+    {
+      "claim_id": "CLM-2024-001",
+      "policy_no": "POL-20200315-001",
+      "claim_date": "2024-11-20",
+      "submitted_docs": [
+        "01_보험금청구서.txt",
+        "02_진단서.txt",
+        "03_입원확인서.txt",
+        "04_진료비영수증.txt",
+        "05_진료비세부내역서.txt"
+      ]
+    },
+    {
+      "claim_id": "CLM-2024-002",
+      "policy_no": "POL-20180601-002",
+      "claim_date": "2024-11-22",
+      "submitted_docs": [
+        "01_보험금청구서.txt",
+        "02_진단서.txt",
+        "03_수술확인서.txt",
+        "04_진료비영수증.txt",
+        "05_진료비세부내역서.txt"
+      ]
+    },
+    {
+      "claim_id": "CLM-2024-003",
+      "policy_no": "POL-20220901-003",
+      "claim_date": "2024-11-25",
+      "submitted_docs": [
+        "01_보험금청구서.txt",
+        "02_진단서.txt",
+        "03_입원확인서.txt",
+        "04_진료비영수증.txt"
+      ]
+    },
+    {
+      "claim_id": "CLM-2024-004",
+      "policy_no": "POL-20190220-004",
+      "claim_date": "2024-11-28",
+      "submitted_docs": [
+        "01_보험금청구서.txt",
+        "02_진단서.txt"
+      ]
+    },
+    {
+      "claim_id": "CLM-2024-005",
+      "policy_no": "POL-20240901-005",
+      "claim_date": "2024-11-07",
+      "submitted_docs": [
+        "01_보험금청구서.txt",
+        "02_진단서.txt",
+        "03_입원확인서.txt",
+        "04_진료비영수증.txt",
+        "05_진료비세부내역서.txt"
+      ]
+    },
+    {
+      "claim_id": "CLM-2024-006",
+      "policy_no": "POL-20240901-005",
+      "claim_date": "2025-01-15",
+      "_scenario": "4세대 실손 지급 검증 — 면책기간 경과 후 정상 지급 (IND 질병 + SIL 4세대 입원)",
+      "submitted_docs": [
+        "01_보험금청구서.txt",
+        "02_진단서.txt",
+        "03_입원확인서.txt",
+        "04_진료비영수증.txt",
+        "05_진료비세부내역서.txt"
+      ]
+    },
+    {
+      "claim_id": "CLM-2024-007",
+      "policy_no": "POL-20210315-006",
+      "claim_date": "2024-12-05",
+      "_scenario": "조건부면책(정신질환 F32) — CONDITIONAL-EXCLUSION FLAGGED",
+      "submitted_docs": [
+        "01_보험금청구서.txt",
+        "02_진단서.txt",
+        "03_입원확인서.txt",
+        "04_진료비영수증.txt",
+        "05_진료비세부내역서.txt"
+      ]
+    },
+    {
+      "claim_id": "CLM-2024-008",
+      "policy_no": "POL-20200801-007",
+      "claim_date": "2024-12-10",
+      "_scenario": "재해 입원(W10 낙상) — 면책0일 + IND 재해 + SUR 4종",
+      "submitted_docs": [
+        "01_보험금청구서.txt",
+        "02_진단서.txt",
+        "03_입원확인서.txt",
+        "04_진료비영수증.txt",
+        "05_진료비세부내역서.txt",
+        "06_수술확인서.txt"
+      ]
+    },
+    {
+      "claim_id": "CLM-2024-009",
+      "policy_no": "POL-20190601-008",
+      "claim_date": "2024-12-12",
+      "_scenario": "SUR max_class=3인데 4종 수술 → 일부지급 (IND+SIL만 지급)",
+      "submitted_docs": [
+        "01_보험금청구서.txt",
+        "02_진단서.txt",
+        "03_수술확인서.txt",
+        "04_진료비영수증.txt",
+        "05_진료비세부내역서.txt"
+      ]
+    },
+    {
+      "claim_id": "CLM-2024-010",
+      "policy_no": "POL-20170101-009",
+      "claim_date": "2024-12-15",
+      "_scenario": "계약 실효(미납) → COM-001 FAIL → 부지급",
+      "submitted_docs": [
+        "01_보험금청구서.txt",
+        "02_진단서.txt",
+        "03_입원확인서.txt",
+        "04_진료비영수증.txt",
+        "05_진료비세부내역서.txt"
+      ]
+    },
+    {
+      "claim_id": "CLM-2024-011",
+      "policy_no": "POL-20230401-010",
+      "claim_date": "2024-12-18",
+      "_scenario": "4세대 실손 비급여 도수치료 한도캡 + billing_items",
+      "submitted_docs": [
+        "01_보험금청구서.txt",
+        "02_진단서.txt",
+        "03_입원확인서.txt",
+        "04_진료비영수증.txt",
+        "05_진료비세부내역서.txt"
+      ]
+    },
+    {
+      "claim_id": "CLM-2024-012",
+      "policy_no": "POL-20200101-011",
+      "claim_date": "2024-12-20",
+      "_scenario": "수술코드 미제공 → KCD(D24) 추론 → SUR-001 FLAGGED",
+      "submitted_docs": [
+        "01_보험금청구서.txt",
+        "02_진단서.txt",
+        "03_수술확인서.txt",
+        "04_진료비영수증.txt",
+        "05_진료비세부내역서.txt"
+      ]
+    },
+    {
+      "claim_id": "CLM-2024-013",
+      "policy_no": "POL-20190901-012",
+      "claim_date": "2024-12-22",
+      "_scenario": "반복청구(COM-004) + 만성질환(CHRONIC-ONSET) 이중 플래그",
+      "submitted_docs": [
+        "01_보험금청구서.txt",
+        "02_진단서.txt",
+        "03_입원확인서.txt",
+        "04_진료비영수증.txt",
+        "05_진료비세부내역서.txt"
+      ]
+    },
+    {
+      "claim_id": "CLM-2024-101",
+      "policy_no": "POL-20190715-101",
+      "claim_date": "2024-12-26",
+      "_scenario": "Agent전용: 고신뢰도 완전자동승인 — K29.1 위장염, 깨끗한 서류, auto_approve",
+      "submitted_docs": [
+        "01_보험금청구서.txt",
+        "02_진단서.txt",
+        "03_입원확인서.txt",
+        "04_진료비영수증.txt",
+        "05_진료비세부내역서.txt"
+      ]
+    },
+    {
+      "claim_id": "CLM-2024-102",
+      "policy_no": "POL-20210901-102",
+      "claim_date": "2024-12-28",
+      "_scenario": "Agent전용: 서류간 정보 불일치 — 입원일수/금액 미스매치, senior_review",
+      "submitted_docs": [
+        "01_보험금청구서.txt",
+        "02_진단서.txt",
+        "03_입원확인서.txt",
+        "04_진료비영수증.txt",
+        "05_진료비세부내역서.txt"
+      ]
+    },
+    {
+      "claim_id": "CLM-2024-103",
+      "policy_no": "POL-20230601-103",
+      "claim_date": "2024-12-30",
+      "_scenario": "Agent전용: 사기의심 복합플래그 — 과잉입원+고액비급여+반복청구, mandatory_hold",
+      "submitted_docs": [
+        "01_보험금청구서.txt",
+        "02_진단서.txt",
+        "03_입원확인서.txt",
+        "04_진료비영수증.txt",
+        "05_진료비세부내역서.txt"
+      ]
+    },
+    {
+      "claim_id": "CLM-2024-104",
+      "policy_no": "POL-20200301-104",
+      "claim_date": "2024-12-30",
+      "_scenario": "Agent전용: 담보해석 경계선 — 안검하수(H02.4) 미용vs기능, enhanced_review",
+      "submitted_docs": [
+        "01_보험금청구서.txt",
+        "02_진단서.txt",
+        "03_입원확인서.txt",
+        "04_진료비영수증.txt",
+        "05_진료비세부내역서.txt",
+        "06_수술확인서.txt"
+      ]
+    },
+    {
+      "claim_id": "CLM-2024-105",
+      "policy_no": "POL-20180901-105",
+      "claim_date": "2024-12-31",
+      "_scenario": "Agent전용: 복합담보 혼합판정 — 재해골절(S72.0)+폐색전증합병(I26.9)+수술+실손",
+      "submitted_docs": [
+        "01_보험금청구서.txt",
+        "02_진단서.txt",
+        "03_입원확인서.txt",
+        "04_진료비영수증.txt",
+        "05_진료비세부내역서.txt",
+        "06_수술확인서.txt"
+      ]
+    }
+  ]
+}

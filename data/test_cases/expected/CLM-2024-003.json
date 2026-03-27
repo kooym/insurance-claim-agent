@@ -1,0 +1,42 @@
+{
+  "claim_id": "CLM-2024-003",
+  "decision": "부지급",
+  "total_payment": 0,
+  "expected_payment_date": "2024-11-28",
+  "payment_deadline_note": "접수일 2024-11-25 기준 3영업일 후 지급 예정일(참고): 2024-11-28 (토·일·공휴일 제외, 상법 제732조·지급기한 기준 문서 참조)",
+  "breakdown": {},
+  "reviewer_flag": false,
+  "reviewer_reason": null,
+  "missing_docs": [],
+  "denial_reason": "알코올 관련 질환으로 약관 면책사유에 해당합니다. (KCD: K70.3)",
+  "policy_clause": "제2조 제1항 제3호",
+  "fraud_investigation_flag": true,
+  "fraud_investigation_reason": "동일 면책사유(K70.3) 반복 청구 이력 2건 — 사기 조사팀 통보 검토 필요. (FRD 위험도: HIGH)",
+  "applied_rules": [
+    {
+      "rule_id": "COM-001",
+      "status": "PASS",
+      "reason": "계약 유효, 납입 정상",
+      "value": null
+    },
+    {
+      "rule_id": "COM-002",
+      "status": "PASS",
+      "reason": "면책기간 경과 확인 — 사고일: 2024-11-25",
+      "value": null
+    },
+    {
+      "rule_id": "COM-003",
+      "status": "FAIL",
+      "reason": "알코올 관련 질환으로 약관 면책사유에 해당합니다. (KCD: K70.3)",
+      "value": null
+    },
+    {
+      "rule_id": "FRD-003",
+      "status": "FLAGGED",
+      "reason": "동일 면책사유(K70.3) 반복 청구 이력 2건 — 사기 조사팀 통보 검토 필요. (FRD 위험도: HIGH)",
+      "value": null
+    }
+  ],
+  "generated_at": "2026-03-19T08:43:44.769861"
+}

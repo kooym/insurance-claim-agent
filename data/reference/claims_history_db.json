@@ -1,0 +1,484 @@
+{
+  "_meta": {
+    "version": "2.0",
+    "description": "청구 이력 DB — policy_no 키 기반 직접 조회. O(1) 접근.",
+    "lookup": "claims_history_db['history'][policy_no]"
+  },
+
+  "history": {
+    "POL-20200315-001": {
+      "policy_no": "POL-20200315-001",
+      "insured_name": "홍길동",
+      "insurance_year": "2024",
+      "ytd_inpatient_paid": 0,
+      "ytd_inpatient_days": 0,
+      "ytd_outpatient_visits": 3,
+      "ytd_outpatient_paid": 87000,
+      "past_claims": [
+        {
+          "claim_id": "CLM-2023-0041",
+          "claim_date": "2023-06-10",
+          "coverage_type": "SIL",
+          "kcd_code": "J00",
+          "diagnosis": "급성 비인두염",
+          "paid_amount": 28000,
+          "decision": "지급"
+        },
+        {
+          "claim_id": "CLM-2023-0118",
+          "claim_date": "2023-09-22",
+          "coverage_type": "SIL",
+          "kcd_code": "M54.5",
+          "diagnosis": "요통",
+          "paid_amount": 59000,
+          "decision": "지급"
+        }
+      ],
+      "fraud_flags": [],
+      "frd_risk_level": "LOW"
+    },
+
+    "POL-20180601-002": {
+      "policy_no": "POL-20180601-002",
+      "insured_name": "김영희",
+      "insurance_year": "2024",
+      "ytd_inpatient_paid": 0,
+      "ytd_inpatient_days": 0,
+      "ytd_outpatient_visits": 5,
+      "ytd_outpatient_paid": 142000,
+      "past_claims": [
+        {
+          "claim_id": "CLM-2022-0089",
+          "claim_date": "2022-03-15",
+          "coverage_type": "SIL",
+          "kcd_code": "N92.0",
+          "diagnosis": "규칙적 과다월경",
+          "paid_amount": 42000,
+          "decision": "지급"
+        }
+      ],
+      "fraud_flags": [],
+      "frd_risk_level": "LOW"
+    },
+
+    "POL-20220901-003": {
+      "policy_no": "POL-20220901-003",
+      "insured_name": "이철수",
+      "insurance_year": "2024",
+      "ytd_inpatient_paid": 0,
+      "ytd_inpatient_days": 0,
+      "ytd_outpatient_visits": 12,
+      "ytd_outpatient_paid": 380000,
+      "past_claims": [
+        {
+          "claim_id": "CLM-2023-0201",
+          "claim_date": "2023-04-05",
+          "coverage_type": "SIL",
+          "kcd_code": "K70.1",
+          "diagnosis": "알코올성 간염",
+          "paid_amount": 0,
+          "decision": "부지급",
+          "denial_reason": "면책사유 (K70.x)"
+        },
+        {
+          "claim_id": "CLM-2023-0302",
+          "claim_date": "2023-08-20",
+          "coverage_type": "SIL",
+          "kcd_code": "K70.1",
+          "diagnosis": "알코올성 간염",
+          "paid_amount": 0,
+          "decision": "부지급",
+          "denial_reason": "면책사유 (K70.x)"
+        }
+      ],
+      "fraud_flags": [
+        {
+          "flag_date": "2023-08-20",
+          "rule_id": "FRD-003",
+          "reason": "동일 면책사유 반복 청구 (K70.x 2회)"
+        }
+      ],
+      "frd_risk_level": "HIGH"
+    },
+
+    "POL-20190220-004": {
+      "policy_no": "POL-20190220-004",
+      "insured_name": "박지수",
+      "insurance_year": "2024",
+      "ytd_inpatient_paid": 0,
+      "ytd_inpatient_days": 0,
+      "ytd_outpatient_visits": 8,
+      "ytd_outpatient_paid": 210000,
+      "past_claims": [],
+      "fraud_flags": [],
+      "frd_risk_level": "LOW"
+    },
+
+    "POL-20240901-005": {
+      "policy_no": "POL-20240901-005",
+      "insured_name": "최민준",
+      "insurance_year": "2024",
+      "ytd_inpatient_paid": 0,
+      "ytd_inpatient_days": 0,
+      "ytd_outpatient_visits": 0,
+      "ytd_outpatient_paid": 0,
+      "past_claims": [],
+      "fraud_flags": [
+        {
+          "flag_date": "2024-11-07",
+          "rule_id": "FRD-001",
+          "reason": "신계약 63일 만에 입원 청구 (면책기간 90일 이내)"
+        }
+      ],
+      "frd_risk_level": "MEDIUM"
+    },
+
+    "POL-20210315-006": {
+      "policy_no": "POL-20210315-006",
+      "insured_name": "정하은",
+      "insurance_year": "2024",
+      "ytd_inpatient_paid": 0,
+      "ytd_inpatient_days": 0,
+      "ytd_outpatient_visits": 2,
+      "ytd_outpatient_paid": 54000,
+      "past_claims": [
+        {
+          "claim_id": "CLM-2023-0410",
+          "claim_date": "2023-11-02",
+          "coverage_type": "SIL",
+          "kcd_code": "J06.9",
+          "diagnosis": "급성 상기도 감염",
+          "paid_amount": 32000,
+          "decision": "지급"
+        }
+      ],
+      "fraud_flags": [],
+      "frd_risk_level": "LOW"
+    },
+
+    "POL-20200801-007": {
+      "policy_no": "POL-20200801-007",
+      "insured_name": "강태현",
+      "insurance_year": "2024",
+      "ytd_inpatient_paid": 0,
+      "ytd_inpatient_days": 0,
+      "ytd_outpatient_visits": 1,
+      "ytd_outpatient_paid": 25000,
+      "past_claims": [],
+      "fraud_flags": [],
+      "frd_risk_level": "LOW"
+    },
+
+    "POL-20190601-008": {
+      "policy_no": "POL-20190601-008",
+      "insured_name": "윤서연",
+      "insurance_year": "2024",
+      "ytd_inpatient_paid": 0,
+      "ytd_inpatient_days": 0,
+      "ytd_outpatient_visits": 4,
+      "ytd_outpatient_paid": 98000,
+      "past_claims": [
+        {
+          "claim_id": "CLM-2023-0520",
+          "claim_date": "2023-07-18",
+          "coverage_type": "SIL",
+          "kcd_code": "M54.5",
+          "diagnosis": "요통",
+          "paid_amount": 45000,
+          "decision": "지급"
+        }
+      ],
+      "fraud_flags": [],
+      "frd_risk_level": "LOW"
+    },
+
+    "POL-20170101-009": {
+      "policy_no": "POL-20170101-009",
+      "insured_name": "한동우",
+      "insurance_year": "2024",
+      "ytd_inpatient_paid": 0,
+      "ytd_inpatient_days": 0,
+      "ytd_outpatient_visits": 0,
+      "ytd_outpatient_paid": 0,
+      "past_claims": [
+        {
+          "claim_id": "CLM-2022-0601",
+          "claim_date": "2022-04-10",
+          "coverage_type": "SIL",
+          "kcd_code": "I10",
+          "diagnosis": "본태성 고혈압",
+          "paid_amount": 38000,
+          "decision": "지급"
+        }
+      ],
+      "fraud_flags": [],
+      "frd_risk_level": "LOW",
+      "_note": "계약 실효(미납) 전 청구 이력 1건"
+    },
+
+    "POL-20230401-010": {
+      "policy_no": "POL-20230401-010",
+      "insured_name": "조은비",
+      "insurance_year": "2024",
+      "ytd_inpatient_paid": 1200000,
+      "ytd_inpatient_days": 10,
+      "ytd_outpatient_visits": 15,
+      "ytd_outpatient_paid": 420000,
+      "past_claims": [
+        {
+          "claim_id": "CLM-2024-0301",
+          "claim_date": "2024-03-15",
+          "coverage_type": "SIL",
+          "kcd_code": "M54.5",
+          "diagnosis": "요통 (도수치료)",
+          "paid_amount": 280000,
+          "decision": "지급"
+        },
+        {
+          "claim_id": "CLM-2024-0502",
+          "claim_date": "2024-06-20",
+          "coverage_type": "IND",
+          "kcd_code": "M51.1",
+          "diagnosis": "추간판장애 입원",
+          "paid_amount": 1200000,
+          "decision": "지급"
+        }
+      ],
+      "fraud_flags": [],
+      "frd_risk_level": "LOW",
+      "_note": "4세대 실손 비급여 사용 높음 — CLM-011 한도캡 테스트 연동"
+    },
+
+    "POL-20200101-011": {
+      "policy_no": "POL-20200101-011",
+      "insured_name": "임재혁",
+      "insurance_year": "2024",
+      "ytd_inpatient_paid": 0,
+      "ytd_inpatient_days": 0,
+      "ytd_outpatient_visits": 6,
+      "ytd_outpatient_paid": 165000,
+      "past_claims": [
+        {
+          "claim_id": "CLM-2023-0715",
+          "claim_date": "2023-05-22",
+          "coverage_type": "SIL",
+          "kcd_code": "J06.9",
+          "diagnosis": "급성 상기도 감염",
+          "paid_amount": 35000,
+          "decision": "지급"
+        }
+      ],
+      "fraud_flags": [],
+      "frd_risk_level": "LOW"
+    },
+
+    "POL-20190901-012": {
+      "policy_no": "POL-20190901-012",
+      "insured_name": "서지원",
+      "insurance_year": "2024",
+      "ytd_inpatient_paid": 850000,
+      "ytd_inpatient_days": 18,
+      "ytd_outpatient_visits": 22,
+      "ytd_outpatient_paid": 620000,
+      "past_claims": [
+        {
+          "claim_id": "CLM-2024-0101",
+          "claim_date": "2024-01-15",
+          "coverage_type": "SIL",
+          "kcd_code": "E11",
+          "diagnosis": "제2형 당뇨병 (통원)",
+          "paid_amount": 45000,
+          "decision": "지급"
+        },
+        {
+          "claim_id": "CLM-2024-0205",
+          "claim_date": "2024-04-08",
+          "coverage_type": "IND",
+          "kcd_code": "E11",
+          "diagnosis": "제2형 당뇨병 합병증 입원",
+          "paid_amount": 180000,
+          "decision": "지급"
+        },
+        {
+          "claim_id": "CLM-2024-0310",
+          "claim_date": "2024-07-22",
+          "coverage_type": "SIL",
+          "kcd_code": "E11",
+          "diagnosis": "제2형 당뇨병 (통원)",
+          "paid_amount": 52000,
+          "decision": "지급"
+        },
+        {
+          "claim_id": "CLM-2024-0412",
+          "claim_date": "2024-09-30",
+          "coverage_type": "IND",
+          "kcd_code": "E11",
+          "diagnosis": "제2형 당뇨병 합병증 재입원",
+          "paid_amount": 573000,
+          "decision": "지급"
+        }
+      ],
+      "fraud_flags": [],
+      "frd_risk_level": "MEDIUM",
+      "_note": "동일 KCD(E11) 4회 청구 — CLM-013 COM-004 반복청구 + CHRONIC-ONSET 트리거용"
+    },
+
+    "POL-20190715-101": {
+      "policy_no": "POL-20190715-101",
+      "insured_name": "김태호",
+      "insurance_year": "2024",
+      "ytd_inpatient_paid": 0,
+      "ytd_inpatient_days": 0,
+      "ytd_outpatient_visits": 2,
+      "ytd_outpatient_paid": 48000,
+      "past_claims": [
+        {
+          "claim_id": "CLM-2023-0810",
+          "claim_date": "2023-08-15",
+          "coverage_type": "SIL",
+          "kcd_code": "J06.9",
+          "diagnosis": "급성 상기도 감염",
+          "paid_amount": 28000,
+          "decision": "지급"
+        }
+      ],
+      "fraud_flags": [],
+      "frd_risk_level": "LOW",
+      "_note": "Agent시나리오 CLM-101 — 깨끗한 이력, 사기 위험 없음"
+    },
+
+    "POL-20210901-102": {
+      "policy_no": "POL-20210901-102",
+      "insured_name": "박현수",
+      "insurance_year": "2024",
+      "ytd_inpatient_paid": 0,
+      "ytd_inpatient_days": 0,
+      "ytd_outpatient_visits": 3,
+      "ytd_outpatient_paid": 85000,
+      "past_claims": [
+        {
+          "claim_id": "CLM-2023-0920",
+          "claim_date": "2023-09-10",
+          "coverage_type": "SIL",
+          "kcd_code": "M54.5",
+          "diagnosis": "요통 (외래)",
+          "paid_amount": 42000,
+          "decision": "지급"
+        }
+      ],
+      "fraud_flags": [],
+      "frd_risk_level": "LOW",
+      "_note": "Agent시나리오 CLM-102 — 서류불일치 시나리오 (이력은 깨끗)"
+    },
+
+    "POL-20230601-103": {
+      "policy_no": "POL-20230601-103",
+      "insured_name": "이상호",
+      "insurance_year": "2024",
+      "ytd_inpatient_paid": 2400000,
+      "ytd_inpatient_days": 35,
+      "ytd_outpatient_visits": 20,
+      "ytd_outpatient_paid": 580000,
+      "past_claims": [
+        {
+          "claim_id": "CLM-2024-0150",
+          "claim_date": "2024-02-10",
+          "coverage_type": "IND",
+          "kcd_code": "S33.5",
+          "diagnosis": "요추 염좌 (입원 10일)",
+          "paid_amount": 300000,
+          "decision": "지급"
+        },
+        {
+          "claim_id": "CLM-2024-0280",
+          "claim_date": "2024-05-15",
+          "coverage_type": "IND",
+          "kcd_code": "M54.5",
+          "diagnosis": "요통 (입원 7일)",
+          "paid_amount": 210000,
+          "decision": "지급"
+        },
+        {
+          "claim_id": "CLM-2024-0390",
+          "claim_date": "2024-08-20",
+          "coverage_type": "SIL",
+          "kcd_code": "S33.5",
+          "diagnosis": "요추 염좌 (입원 8일)",
+          "paid_amount": 890000,
+          "decision": "지급"
+        },
+        {
+          "claim_id": "CLM-2024-0510",
+          "claim_date": "2024-10-05",
+          "coverage_type": "IND",
+          "kcd_code": "M54.5",
+          "diagnosis": "요통 (입원 10일)",
+          "paid_amount": 300000,
+          "decision": "지급"
+        }
+      ],
+      "fraud_flags": [
+        {
+          "flag_date": "2024-08-20",
+          "rule_id": "FRD-002",
+          "reason": "12개월 내 동일 부위 반복 입원 3회 이상"
+        },
+        {
+          "flag_date": "2024-10-05",
+          "rule_id": "FRD-004",
+          "reason": "연간 입원일수 35일 — 과잉입원 의심"
+        }
+      ],
+      "frd_risk_level": "HIGH",
+      "_note": "Agent시나리오 CLM-103 — 사기의심 복합플래그. 12개월 내 요추 관련 4회 입원"
+    },
+
+    "POL-20200301-104": {
+      "policy_no": "POL-20200301-104",
+      "insured_name": "송미라",
+      "insurance_year": "2024",
+      "ytd_inpatient_paid": 0,
+      "ytd_inpatient_days": 0,
+      "ytd_outpatient_visits": 5,
+      "ytd_outpatient_paid": 130000,
+      "past_claims": [
+        {
+          "claim_id": "CLM-2022-0720",
+          "claim_date": "2022-07-20",
+          "coverage_type": "SIL",
+          "kcd_code": "H10.1",
+          "diagnosis": "급성 결막염",
+          "paid_amount": 35000,
+          "decision": "지급"
+        }
+      ],
+      "fraud_flags": [],
+      "frd_risk_level": "LOW",
+      "_note": "Agent시나리오 CLM-104 — 담보해석 경계선 (이력은 깨끗)"
+    },
+
+    "POL-20180901-105": {
+      "policy_no": "POL-20180901-105",
+      "insured_name": "정도윤",
+      "insurance_year": "2024",
+      "ytd_inpatient_paid": 0,
+      "ytd_inpatient_days": 0,
+      "ytd_outpatient_visits": 4,
+      "ytd_outpatient_paid": 110000,
+      "past_claims": [
+        {
+          "claim_id": "CLM-2023-0330",
+          "claim_date": "2023-03-22",
+          "coverage_type": "SIL",
+          "kcd_code": "I10",
+          "diagnosis": "본태성 고혈압 (통원)",
+          "paid_amount": 32000,
+          "decision": "지급"
+        }
+      ],
+      "fraud_flags": [],
+      "frd_risk_level": "LOW",
+      "_note": "Agent시나리오 CLM-105 — 복합담보 혼합판정 (이력 깨끗)"
+    }
+  }
+}
