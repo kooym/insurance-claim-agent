@@ -139,10 +139,13 @@ def render_scenario_gallery() -> str | None:
                     tag_chips = "".join(f'<span class="card-tag">{t}</span>' for t in tags)
                     tags_html = f'<div class="card-tags">{tag_chips}</div>'
 
-                # 수술 정보
+                # 수술 정보 (고정 높이)
                 surgery_part = (
-                    f'<div style="font-size:0.82rem;color:#6B7684;margin-bottom:8px">🔪 {card["surgery"]}</div>'
-                    if card["surgery"] else ""
+                    f'<div style="font-size:0.82rem;color:#6B7684;margin-bottom:8px;'
+                    f'height:20px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'
+                    f'🔪 {card["surgery"]}</div>'
+                    if card["surgery"]
+                    else '<div style="height:20px;margin-bottom:8px"></div>'
                 )
                 chip_class = (
                     "pass" if card["decision"] == "지급"
@@ -164,7 +167,7 @@ def render_scenario_gallery() -> str | None:
                     f'{tags_html}'
                     f'<div class="card-diagnosis">{card["kcd_display"]}</div>'
                     f'{surgery_part}'
-                    '<div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">'
+                    '<div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px">'
                     f'<span class="status-chip status-chip-{chip_class}">{cfg["icon"]} {cfg["label"]}</span>'
                     f'<span class="card-amount">{fmt_amount(card["total_payment"])}</span>'
                     '</div>'
@@ -1677,12 +1680,15 @@ def render_coverage_breakdown_v2(result) -> None:
     for dc in denial_covs:
         denial_map[dc.get("rule_id", "")] = dc.get("reason", "")
 
-    # 거부 담보 중 breakdown에 없는 것도 추가 표시
+    # 거부 담보 중 breakdown에 없는 것도 추가 표시 (evidence 보존)
     all_items: list[tuple[str, dict]] = list(breakdown.items())
     for dc in denial_covs:
         rid = dc.get("rule_id", "")
         if rid and rid not in breakdown:
-            all_items.append((rid, {"benefit_amount": 0, "formula": "해당 없음"}))
+            ev = dc.get("evidence", {}) if isinstance(dc.get("evidence"), dict) else {}
+            ev.setdefault("benefit_amount", 0)
+            ev.setdefault("formula", "해당 없음")
+            all_items.append((rid, ev))
 
     num_cols = min(max(len(all_items), 1), 3)
     cols = st.columns(num_cols)

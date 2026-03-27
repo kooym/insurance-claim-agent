@@ -1291,6 +1291,10 @@ html, body, [class*="css"] {
     transition: all 0.2s ease;
     cursor: default;
     border-left: 5px solid var(--gray-300);
+    display: flex;
+    flex-direction: column;
+    min-height: 240px;
+    box-sizing: border-box;
 }
 .scenario-card-enhanced:hover {
     border-color: var(--color-primary);
@@ -1329,7 +1333,10 @@ html, body, [class*="css"] {
     padding: var(--space-xs) var(--space-sm);
     background: var(--gray-50);
     border-radius: var(--radius-sm);
-    display: inline-block;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .scenario-card-enhanced .card-amount {
     font-size: 1.3rem;
@@ -1348,6 +1355,9 @@ html, body, [class*="css"] {
     flex-wrap: wrap;
     gap: 4px;
     margin-bottom: var(--space-sm);
+    min-height: 22px;
+    max-height: 48px;
+    overflow: hidden;
 }
 .card-tag {
     display: inline-block;
